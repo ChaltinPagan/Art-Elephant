@@ -7,6 +7,7 @@ import Opportunities from './components/Opportunities/Opportunities';
 import About from './components/About/About';
 import FAQ from './components/FAQ/FAQ';
 import Login from './components/Login/Login';
+import Profile from './components/Profile/Profile';
 import './App.css';
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
               <NavItem eventKey={2} componentClass="p" ><Link to="/opportunities">Opportunities</Link></NavItem>
               <NavItem eventKey={3} componentClass="p" ><Link to="/about">About</Link></NavItem>
               <NavItem eventKey={4} componentClass="p" ><Link to="/faq">FAQ</Link></NavItem>
+              <NavItem eventKey={5} componentClass="p" ><Link to="/profile">Sample Profile</Link></NavItem>
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={1} componentClass="p" ><Link to="/login">Login</Link></NavItem>
@@ -46,6 +48,7 @@ class App extends Component {
           <Route path="/about" component={About} />
           <Route path="/faq" component={FAQ} />
           <Route path="/login" component={Login} />
+          <Route path="/profile" component={Profile} />
         </Switch>
       </div>
     );
