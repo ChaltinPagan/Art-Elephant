@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import registryHelpers from './registry-helpers';
 import './Registry.css';
 import Filters from './Filters';
-import Profile from '../Profile/Profile';
+// import Profile from '../Profile/Profile';
 
 class Registry extends Component {
     constructor(){
@@ -33,14 +33,12 @@ class Registry extends Component {
                     {/* Convert ASCII number to English letter. */}
                     {alphabet.map( el => 
                         <li key={el} onClick={this.handleClick}>
-                            {String.fromCharCode(el)}
+                            <Link to="/registry">{String.fromCharCode(el)}</Link>
                         </li>
                     )}
                 </ul>
 
                 <Filters />
-
-                <Profile selected={selected} />
             </div>
         )
     }

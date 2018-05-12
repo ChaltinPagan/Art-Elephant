@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Slideshow from '../Profile/Slideshow';
 
 class FAQ extends Component {
     constructor(){
@@ -12,6 +13,7 @@ class FAQ extends Component {
         return(
             <div>
                 <h1>FAQ</h1>
+                <Slideshow />
             </div>
         )
     }
