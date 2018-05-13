@@ -1,7 +1,7 @@
 .title {
     grid-area: title;
-    text-align: center;
-    margin: auto;
+    text-align: left;
+    /* margin: auto; */
 }
 
 .slideshow {
@@ -11,12 +11,40 @@
 }
 
 /* .slideshow img {
-    height: 70vw;
+    margin: auto;
+    height: 60vh;
 } */
 
-.name{
-    grid-area: name;    
-    text-align: center;
+/* .carousel-caption {
+    position: static;
+    top: 100px;
+    color: black;
+    text-shadow: none;
+} */
+
+/* .carousel-indicators ol {
+    position: relative;
+    margin-top: 100px;
+} */
+
+/* .carousel-indicators li {
+    color: black;
+    background-color: black;
+    border: black;
+} */
+
+/* .carousel-indicators .active {
+    color: white;
+    background-color: black;
+    border: black;
+} */
+
+/* .carousel-control {
+    text-shadow: none;
+} */
+
+.back {
+    grid-area: back;
     margin: auto;
 }
 
@@ -40,9 +68,7 @@
     margin: auto;
     display: grid;
     grid-template-areas: 
-        'title title title'
-        'slideshow name name'
-        'slideshow info info'
-        'slideshow info info';
-    grid-gap: 10px;
+        'back title'
+        'slideshow info';
+    grid-gap: 2em;
 }

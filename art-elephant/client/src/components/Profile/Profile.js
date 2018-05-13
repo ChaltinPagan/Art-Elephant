@@ -25,7 +25,7 @@ class Profile extends Component {
             })
     };
 
-    componentWillMount = () => {
+    componentDidMount = () => {
         this.getArtistInfo();
     };
 
@@ -35,18 +35,17 @@ class Profile extends Component {
         return(
             <div className="grid-container">
                 <div className="title">
-                    <h1>Artist Profile</h1>
-                    <Button componentClass="p">
+                    <h2>{`${profile.first_name} ${profile.last_name}`}</h2>
+                    <h3>{`Medium: ${profile.medium}`}</h3>
+                </div>
+
+                <div className="back">
+                    <Button componentClass="p" id="back_button">
                         <Link to='/registry'>Back</Link>
                     </Button>
                 </div>
 
                 <Slideshow />
-
-                <div className="name">
-                    <h2>Chaltin Pagan</h2>
-                    <h3>Medium: painting</h3>
-                </div>
 
                 <div className="info">
                     <Tabs defaultActiveKey={1} id="profile-tabs" >
@@ -54,7 +53,7 @@ class Profile extends Component {
                             {/* <Statement /> */}
                             <p>{profile.statement}</p>
                         </Tab>
-                        <Tab eventKey={2} title="Location">
+                        <Tab eventKey={2} title="Studio Location">
                             <p>{profile.address}</p>
                             <Map location={profile.address}/>
                         </Tab>

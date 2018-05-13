@@ -16,7 +16,11 @@ const getUsers = (req, res, next) => {
 };
 
 const getArtists = (req, res, next) => {
-    db.any('SELECT * FROM artists LEFT JOIN users ON artists.user_id=users.id')
+    // Exclude users.password from query
+    db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address,
+        users.first_name, users.last_name, users.email 
+        FROM artists 
+        LEFT JOIN users ON artists.user_id=users.id`)
         .then( (data) => {
             res.status(200)
                 .send({
@@ -30,7 +34,12 @@ const getArtists = (req, res, next) => {
 
 const getSingleArtist = (req, res, next) => {
     console.log("sigle:", req.params)
-    db.any('SELECT * FROM artists LEFT JOIN users ON artists.user_id=users.id WHERE artists.id=${id}', req.params)
+    // Exclude users.password from query
+    db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address, 
+        users.first_name, users.last_name, users.email 
+        FROM artists 
+        LEFT JOIN users ON artists.user_id=users.id ` 
+        + 'WHERE artists.id=${id}', req.params)
         .then( (data) => {
             if (data.length) {
                 res.status(200)
