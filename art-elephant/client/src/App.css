@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+  font-size: 16px;
+}
+
+/* .App-title {
+  font-size: 1.5em;
+} */
+
+body {
+  font-family: 'Do Hyeon', sans-serif;
+}
+
+/* Navigation */
+#nav {
+  border-radius: 0;
+}
+
+#nav p {
+  padding: 15px;
+  margin: 0;
+}
+
+#nav a {
+  color: white;
+  text-decoration: none;
+}
+
+#appName img {
+  margin-right: 5px;
+}
+
+#appName {
+  margin-top: -5px;
+}

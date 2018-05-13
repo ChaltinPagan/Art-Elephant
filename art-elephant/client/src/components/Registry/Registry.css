@@ -1,0 +1,37 @@
+/* Styling for registry index. */
+.registry ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.registry li {
+    display: inline-block;
+    margin: 1em;
+}
+
+.alphaIndex a {
+    color: black;
+    padding: 0.5em;
+}
+
+.alphaIndex a:hover {
+    color: black;
+    background-color: rgb(230, 230, 230);
+    text-decoration: none;
+}
+
+/* Styling for filter buttons. */
+h3 {
+    display: inline;
+}
+
+.btn-group {
+    margin: 0 20px;
+}
+
+/* .dropdown-menu li:hover {
+    margin: 0;
+    padding: 10px;
+    width: auto;
+    background-color: rgb(230, 230, 230);
+} */
