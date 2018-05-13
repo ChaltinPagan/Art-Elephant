@@ -47,8 +47,7 @@ class NewUser extends Component {
             last_name: last_name,
             email: email,
             password: password,
-        })
-            .then(res => {
+        }).then(res => {
                 console.log("new:", res.data);
                 this.setState({
                     first_name: "",

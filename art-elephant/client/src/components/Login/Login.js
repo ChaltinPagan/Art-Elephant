@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import axios from 'axios';
 
 class Login extends Component {
@@ -10,7 +10,7 @@ class Login extends Component {
             email: "",
             password: "",
             message: "",
-            submit: false
+            submit: true
         };
     }
 
@@ -25,29 +25,29 @@ class Login extends Component {
     submitForm = e => {
         e.preventDefault();
         const { email, password } = this.state;
-    
+
         axios.post('/users', {
             email: email,
             password: password
-          })
-          .then(res => {
-            console.log("login res:", res);
-            if (res.status !== 200) {
-              this.setState({ email: "", password: "", message: "Incorrect password." });
-            } else {
-              this.setState({ email: "", password: "", message: "Logged In.", submit: true });
-            }
-            
-          })
-          .catch(err => {
-            console.log("error", err);
-            this.setState({ email: "", password: "", message: "User does not exist." });
-          });
-      };
+        })
+            .then(res => {
+                console.log("login res:", res);
+                if (res.status !== 200) {
+                    this.setState({ email: "", password: "", message: "Incorrect password." });
+                } else {
+                    this.setState({ email: "", password: "", message: "Logged In.", submit: true });
+                }
+
+            })
+            .catch(err => {
+                console.log("error", err);
+                this.setState({ email: "", password: "", message: "User does not exist." });
+            });
+    };
 
     render() {
         const { submit, message } = this.state;
-        if (!submit) {
+        // if (!submit) {
             return (
                 <div>
                     <h1>Login</h1>
@@ -61,17 +61,27 @@ class Login extends Component {
                         </p>
                         <input type="submit" value="Submit" />
                         <p>{message}</p>
+                        <div>
+                            {submit ? 
+                                <Alert bsStyle="success">
+                                    <p>Welcome Back!</p>
+                                </Alert> : ""
+                            }
+                        </div>
                     </form>
                 </div>
             )
-        } else {
-            return (
-                <div>
-                    <h1>Login</h1>
-                    <p>Welcome Back!</p>
-                </div>
-            )
-        }
+        // } else {
+        //     return (
+        //         <div>
+        //             <h1>Login</h1>
+        //             {/* <p>Welcome Back!</p> */}
+        //             <Alert bsStyle="success">
+        //                 <p>Welcome Back!</p>
+        //             </Alert>
+        //         </div>
+        //     )
+        // }
 
     }
 }
