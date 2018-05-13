@@ -7,5 +7,7 @@ const db = require('../db/queries');
 // });
 
 router.get('/', db.getUsers);
+router.post('/', db.loginUser);
+router.post('/new', db.registerUser);
 
 module.exports = router;
