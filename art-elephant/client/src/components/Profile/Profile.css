@@ -5,22 +5,25 @@
 }
 
 .slideshow {
-    height: 80vh;
-    width: 500px;
+    height: 40vh;
+    width: 30vw;
     grid-area: slideshow;
 }
 
-/* .slideshow img {
+.slideshow img {
     margin: auto;
-    height: 60vh;
-} */
+}
 
-/* .carousel-caption {
+.carousel-caption {
     position: static;
     top: 100px;
     color: black;
     text-shadow: none;
-} */
+}
+
+.carousel {
+    border: 2px dotted red;
+}
 
 /* .carousel-indicators ol {
     position: relative;
@@ -39,9 +42,16 @@
     border: black;
 } */
 
-/* .carousel-control {
+.carousel-control {
+    height: 100px;
     text-shadow: none;
-} */
+    background-color: transparent;
+    margin-top: 600px;
+}
+
+.glyphicon {
+    color: black;
+}
 
 .back {
     grid-area: back;
