@@ -11,7 +11,7 @@ class Profile extends Component {
     constructor(props){
         super(props);
         this.state = {
-            profile: []
+            profile: null
         };
     }
 
@@ -31,39 +31,44 @@ class Profile extends Component {
 
     render(){
         const { profile } = this.state;
-        console.log("add:", profile.address)
-        return(
-            <div className="grid-container">
-                <div className="title">
-                    <h2>{`${profile.first_name} ${profile.last_name}`}</h2>
-                    <h3>{`Medium: ${profile.medium}`}</h3>
+        if (profile) {
+            return(
+                <div className="grid-container">
+                    <div className="title">
+                        <h2>{`${profile.first_name} ${profile.last_name}`}</h2>
+                        <h3>{`Medium: ${profile.medium}`}</h3>
+                    </div>
+    
+                    <div className="back">
+                        <Button componentClass="p" id="back_button">
+                            <Link to='/registry'>Back</Link>
+                        </Button>
+                    </div>
+    
+                    <Slideshow />
+    
+                    <div className="info">
+                        <Tabs defaultActiveKey={1} id="profile-tabs" >
+                            <Tab eventKey={1} title="Statement">
+                                {/* <Statement /> */}
+                                <p>{profile.statement}</p>
+                            </Tab>
+                            <Tab eventKey={2} title="Studio Location">
+                                <p>{profile.address}</p>
+                                <Map location={profile.address}/>
+                            </Tab>
+                            <Tab eventKey={3} title="Contact">
+                                <p>Contact here</p>
+                            </Tab>
+                        </Tabs>
+                    </div>
                 </div>
-
-                <div className="back">
-                    <Button componentClass="p" id="back_button">
-                        <Link to='/registry'>Back</Link>
-                    </Button>
-                </div>
-
-                <Slideshow />
-
-                <div className="info">
-                    <Tabs defaultActiveKey={1} id="profile-tabs" >
-                        <Tab eventKey={1} title="Statement">
-                            {/* <Statement /> */}
-                            <p>{profile.statement}</p>
-                        </Tab>
-                        <Tab eventKey={2} title="Studio Location">
-                            <p>{profile.address}</p>
-                            <Map location={profile.address}/>
-                        </Tab>
-                        <Tab eventKey={3} title="Contact">
-                            <p>Contact here</p>
-                        </Tab>
-                    </Tabs>
-                </div>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div>Loading...</div>
+            )
+        }
             
     }
 }

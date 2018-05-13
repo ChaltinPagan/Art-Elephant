@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import './Registry.css';
-import Filters from './Filters';
 import Profile from '../Profile/Profile';
 import Artists from './Artists';
 
