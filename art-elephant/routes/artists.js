@@ -7,5 +7,6 @@ const db = require('../db/queries');
 // });
 
 router.get('/', db.getArtists);
+router.get('/:id', db.getSingleArtist);
 
 module.exports = router;

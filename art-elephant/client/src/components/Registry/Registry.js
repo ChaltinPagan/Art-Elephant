@@ -1,37 +1,25 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import registryHelpers from './registry-helpers';
+import { Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 import './Registry.css';
 import Filters from './Filters';
-import axios from 'axios';
-// import Profile from '../Profile/Profile';
+import Profile from '../Profile/Profile';
+import Artists from './Artists';
 
 class Registry extends Component {
     constructor(){
         super();
         this.state = {
-            alphabet: registryHelpers.alphabet(),
-            medium: "",
-            genre: "",
-            location: "",
-            selected: "", 
             artists: []
         };
     }
 
-    handleClick = (e) => {
-        this.setState({
-            selected: e.target.innerText
-        });
-    };
-
     getArtists = () => {
         axios.get('/artists')
             .then( res => {
-                console.log("artists", res.data.artists);
                 this.setState({
                     artists: res.data.artists
-                });
+                })
             })
             .catch( err => console.log(err) );
     };
@@ -40,25 +28,29 @@ class Registry extends Component {
         this.getArtists();
     };
 
+    renderArtistList = () => {
+        const { artists } = this.state;
+        return <Artists artists={artists} />
+    };
+
+    renderProfile = (props) => {
+        const { artist_id } = props.match.params;
+        return <Profile artist_id={artist_id} />
+    }
+
     render(){
-        const { alphabet, artists } = this.state;
-        // console.log("selected", selected)
         return(
             <div className='registry'>
                 <h1>Artist Registry</h1>
-                <ul className='alphaIndex'>
-                    {/* Convert ASCII number to English letter. */}
-                    {alphabet.map( el => 
-                        <li key={el} onClick={this.handleClick}>
-                            <Link to="/registry">{String.fromCharCode(el)}</Link>
-                        </li>
-                    )}
-                </ul>
 
                 <Filters />
 
-                {artists.map( el =>
-                <li key={el.id}>{el.name}, {el.medium}</li>)}
+                <Switch>
+                    <Route exact path='/registry' render={this.renderArtistList} />
+                    <Route path='/registry/:artist_id' render={this.renderProfile} />
+                </Switch>
+
+
             </div>
         )
     }

@@ -28,7 +28,29 @@ const getArtists = (req, res, next) => {
         });
 };
 
+const getSingleArtist = (req, res, next) => {
+    console.log("sigle:", req.params)
+    db.any('SELECT * FROM artists LEFT JOIN users ON artists.user_id=users.id WHERE artists.id=${id}', req.params)
+        .then( (data) => {
+            if (data.length) {
+                res.status(200)
+                .send({
+                    single_artist: data
+                });
+            } else {
+                res.status(404)
+                .send({
+                    message: "No artist with this ID"
+                });
+            }
+        })
+        .catch( (err) => {
+            return next(err);
+        });
+};
+
 module.exports = {
     getUsers,
-    getArtists
+    getArtists, 
+    getSingleArtist
 };
