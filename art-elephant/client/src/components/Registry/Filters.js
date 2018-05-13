@@ -1,10 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import registryHelpers from './registry-helpers';
+
+const alphabet = registryHelpers.alphabet();
 
 const Filters = () => {
     return (
         <div>
-            <h3>Filter</h3>
+            <ul className='alphaIndex'>
+                    {/* Convert ASCII number to English letter. */}
+                    {alphabet.map( el => 
+                        <li key={el} onClick={this.handleClick}>
+                            <Link to="/registry">{String.fromCharCode(el)}</Link>
+                        </li>
+                    )}
+                </ul>
             
             <DropdownButton
                 title="Medium"
