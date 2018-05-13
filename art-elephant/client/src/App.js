@@ -7,7 +7,8 @@ import Opportunities from './components/Opportunities/Opportunities';
 import About from './components/About/About';
 import FAQ from './components/FAQ/FAQ';
 import Login from './components/Login/Login';
-import Profile from './components/Profile/Profile';
+// import Profile from './components/Profile/Profile';
+import NewUser from './components/Login/NewUser';
 import './App.css';
 
 class App extends Component {
@@ -33,7 +34,7 @@ class App extends Component {
               <NavItem eventKey={2} componentClass="p" ><Link to="/opportunities">Opportunities</Link></NavItem>
               <NavItem eventKey={3} componentClass="p" ><Link to="/about">About</Link></NavItem>
               <NavItem eventKey={4} componentClass="p" ><Link to="/faq">FAQ</Link></NavItem>
-              <NavItem eventKey={5} componentClass="p" ><Link to="/profile">Sample Profile</Link></NavItem>
+              {/* <NavItem eventKey={5} componentClass="p" ><Link to="/profile">Sample Profile</Link></NavItem> */}
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={1} componentClass="p" ><Link to="/login">Login</Link></NavItem>
@@ -44,12 +45,12 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/registry" component={Registry} />
-          {/* <Route path='/registry/:artist_id' component={Profile} /> */}
           <Route path="/opportunities" component={Opportunities} />
           <Route path="/about" component={About} />
           <Route path="/faq" component={FAQ} />
           <Route path="/login" component={Login} />
-          <Route path="/profile" component={Profile} />
+          {/* <Route path="/profile" component={Profile} /> */}
+          <Route path="/new-user" component={NewUser} />
         </Switch>
       </div>
     );
