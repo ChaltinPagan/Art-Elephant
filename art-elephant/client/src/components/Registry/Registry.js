@@ -43,13 +43,10 @@ class Registry extends Component {
             <div className='registry'>
                 <h1>Artist Registry</h1>
 
-                <Filters />
-
                 <Switch>
                     <Route exact path='/registry' render={this.renderArtistList} />
                     <Route path='/registry/:artist_id' render={this.renderProfile} />
                 </Switch>
-
 
             </div>
         )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Geocode from 'react-geocode';
 import GoogleMapReact from 'google-map-react';
-// import axios from 'axios';
+import axios from 'axios';
 
 const AnyReactComponent = ({ src }) => <img alt="studio" src={src}/>;
 
@@ -10,56 +10,60 @@ class Map extends Component {
         super(props);
         this.state = {
             api_key: "AIzaSyB5s7V6Ehzj1w8qsUlWmTxiDp_EZWqw7c4",
-            location: encodeURIComponent(this.props.location),
+            location: "245 Broome St, NY, NY",
             lat: null,
             lng: null
         };
     
 
         // Enable or disable logs.
-        Geocode.enableDebug();
+    //     Geocode.enableDebug();
 
-        // Get latidude & longitude from address.
-            Geocode.fromAddress(`${this.state.location}`).then(
-                response => {
-                    const { lat, lng } = response.results[0].geometry.location;
-                    console.log("res:", response);
+    //     // Get latidude & longitude from address.
+    //         Geocode.fromAddress(`${this.state.location}`).then(
+    //             response => {
+    //                 const { lat, lng } = response.results[0].geometry.location;
+    //                 console.log("res:", response);
+    //                 this.setState({
+    //                     lat: lat,
+    //                     lng: lng
+    //                 });
+    //             },
+    //             error => {
+    //                 console.error(error);
+    //             });
+        
+    // }
+    }
+        getCoordinates = () => {
+            const { location, api_key } = this.state;
+            const place = this.props.location;
+            console.log("place:", place);
+            axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=` + place + `&key=AIzaSyB5s7V6Ehzj1w8qsUlWmTxiDp_EZWqw7c4`)
+                .then( res => {
+                    const { lat, lng } = res.data.results[0].geometry.location;
+                    console.log("res:", res);
                     this.setState({
                         lat: lat,
                         lng: lng
                     });
-                },
-                error => {
-                    console.error(error);
-                });
-        
-    }
-        // getCoordinates = () => {
-        //     const { location, api_key } = this.state;
-        //     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=245%20Broome%20St,%20NY,%20NY=AIzaSyB5s7V6Ehzj1w8qsUlWmTxiDp_EZWqw7c4`)
-        //         .then( res => {
-        //             const { lat, lng } = res.results[0].geometry.location;
-        //             console.log("res:", res.results);
-        //             this.setState({
-        //                 lat: lat,
-        //                 lng: lng
-        //             });
-        //         })
-        //         .catch( err => console.log(err));
-        // }
+                })
+                .catch( err => console.log(err));
+        }
 
-        // componentDidMount = () => {
-        //     this.getCoordinates();
-        // }
+        componentDidMount = () => {
+            this.getCoordinates();
+        }
     
 
     render() {
         const { lat, lng, api_key } = this.state;
         const center = {lat: lat, lng: lng};
+        let address = this.props.location;
         console.log("address:", this.props.location)
-        // if(!this.state.address) {
-        //     return <div>Loading...</div>
-        // } else {
+        if(!address) {
+            return <div>Loading...</div>
+        } else {
             return (
                 // Important! Always set the container height explicitly
                 <div style={{ height: '50vh', width: '100%' }}>
@@ -76,7 +80,7 @@ class Map extends Component {
                     </GoogleMapReact>
                 </div>
             )
-
+        }
         
     }
 }
