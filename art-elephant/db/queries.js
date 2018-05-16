@@ -1,6 +1,7 @@
-const pgp = require('pg-promise')({});
-const connectionString = 'postgres://localhost/artelephant';
-const db = pgp(connectionString);
+// const pgp = require('pg-promise')({});
+// const connectionString = 'postgres://localhost/artelephant';
+// const db = pgp(connectionString);
+const db = require('../auth/db');
 const authHelpers = require('../auth/helpers');
 const passport = require('../auth/local');
 

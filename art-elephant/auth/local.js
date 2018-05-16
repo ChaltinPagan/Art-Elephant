@@ -1,9 +1,10 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const init = require('./passport');
-var pgp = require('pg-promise')({});
-var connectionString = 'postgres://localhost/artelephant';
-var db = pgp(connectionString);
+// var pgp = require('pg-promise')({});
+// var connectionString = 'postgres://localhost/artelephant';
+// var db = pgp(connectionString);
+const db = require('./db');
 const authHelpers = require('./helpers');
 
 const options = {};
