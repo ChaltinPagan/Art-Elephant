@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
+import { GOOGLE_API_KEY } from '../../app-env';
 
 const MapMarker = ({ src }) => <img alt="studio" src={src}/>;
 
@@ -8,7 +9,7 @@ class Map extends Component {
     constructor(props){
         super(props);
         this.state = {
-            api_key: "AIzaSyB5s7V6Ehzj1w8qsUlWmTxiDp_EZWqw7c4",
+            api_key: GOOGLE_API_KEY,
             location: this.props.location,
             lat: null,
             lng: null
@@ -17,6 +18,7 @@ class Map extends Component {
     }
         getCoordinates = () => {
             const { location, api_key } = this.state;
+            console.log("key:", api_key);
             axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${api_key}`)
                 .then( res => {
                     const { lat, lng } = res.data.results[0].geometry.location;
