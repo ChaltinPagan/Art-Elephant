@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS artelephant;
-CREATE DATABASE artelephant;
+DROP DATABASE IF EXISTS elephant;
+CREATE DATABASE elephant;
 
 \c artelephant;
 
