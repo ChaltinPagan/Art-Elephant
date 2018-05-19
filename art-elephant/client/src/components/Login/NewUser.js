@@ -15,21 +15,20 @@ class NewUser extends Component {
         };
     }
 
-    componentDidMount() {
-        axios.get('/users')
-            .then(res => {
-                this.setState({
-                    allUsers: res.data.users
-                });
-            });
-    }
+    // componentDidMount() {
+    //     axios.get('/users')
+    //         .then(res => {
+    //             this.setState({
+    //                 allUsers: res.data.users
+    //             });
+    //         });
+    // }
 
     handleChange = e => {
-        console.log(this.state);
         this.setState({
             [e.target.name]: e.target.value
         });
-    };
+    }
 
     submitForm = e => {
         e.preventDefault();
@@ -43,22 +42,24 @@ class NewUser extends Component {
         // }
         const { first_name, last_name, email, password } = this.state;
         axios.post('/users/new', {
-            first_name: first_name,
-            last_name: last_name,
-            email: email,
-            password: password,
-        }).then(res => {
-                console.log("new:", res.data);
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                password: password,
+            })
+            .then(res => {
+                console.log("new user:", res.data);
                 this.setState({
                     first_name: "",
                     last_name: "",
                     email: "",
                     password: "",
+                    message: "Welcome new user!",
                     submit: true
                 });
             })
             .catch(err => {
-                console.log("error: ", err);
+                console.log("error:", "Error inserting user. Email already taken.");
                 this.setState({
                     first_name: "",
                     last_name: "",
@@ -70,21 +71,21 @@ class NewUser extends Component {
     };
 
     render() {
-        const { message, submit } = this.state;
-        console.log("submit:", submit);
+        const { first_name, last_name, email, password, message, submit } = this.state;
+        console.log("new user submit:", submit);
         if (!submit) {
             return (
                 <div>
                     <h1>Create an Account</h1>
                     <form onSubmit={this.submitForm} >
                         <p>First Name:</p>
-                        <input type="text" name="first_name" onChange={this.handleChange} />
+                        <input type="text" name="first_name" value={first_name} onChange={this.handleChange} />
                         <p>Last Name:</p>
-                        <input type="text" name="last_name" onChange={this.handleChange} />
+                        <input type="text" name="last_name" value={last_name} onChange={this.handleChange} />
                         <p>Email:</p>
-                        <input type="text" name="email" onChange={this.handleChange} />
+                        <input type="text" name="email" value={email} onChange={this.handleChange} />
                         <p>Password:</p>
-                        <input type="password" name="password" onChange={this.handleChange} />
+                        <input type="password" name="password" value={password} onChange={this.handleChange} />
                         <br />
                         <input type="submit" value="Submit" />
                         <p>{message}</p>

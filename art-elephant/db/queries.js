@@ -24,7 +24,6 @@ const loginUser = (req, res, next) => {
         .then(data => {
             console.log("data:", data);
             let compare = authHelpers.comparePass(req.body.password, data[0].password);
-            console.log(compare);
             passport.authenticate('local', (err, user, info) => {
                 if (compare) {
                     res.status(200)
@@ -55,26 +54,27 @@ const loginUser = (req, res, next) => {
 
 const registerUser = (req, res, next) => {
     return authHelpers.createUser(req)
-      .then((response) => {
-        passport.authenticate('local', (err, user, info) => {
-          if (user) {
-            res.status(200)
-               .json({
-                 status: 'success',
-                 data: user,
-                 message: 'Registered one user'
-               });
-          }
-        })(req, res, next);
-      })
-      .catch((err) => {
-        res.status(500)
-           .json({
-             status: 'error',
-             error: err
-           })
-      });
-  }
+        .then(response => {
+            console.log("response:", response);
+            passport.authenticate('local', (err, user, info) => {
+                if (response) {
+                    res.status(200)
+                        .json({
+                            status: 'success',
+                            data: response,
+                            message: 'Registered one user'
+                        });
+                }
+            })(req, res, next);
+        })
+        .catch((err) => {
+            res.status(500)
+                .json({
+                    status: 'error',
+                    error: 'Error inserting user. Email already taken.'
+                })
+        });
+}
 
 const getArtists = (req, res, next) => {
     // Exclude users.password from query

@@ -10,13 +10,11 @@ class Login extends Component {
             email: "",
             password: "",
             message: "",
-            submit: true
+            submit: false
         };
     }
 
     handleChange = e => {
-        console.log("email:", this.state.email);
-        console.log("pw:", this.state.password);
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -27,7 +25,7 @@ class Login extends Component {
         const { email, password } = this.state;
 
         axios.post('/users', {
-            email: email,
+            email: email.toLowerCase(),
             password: password
         })
             .then(res => {
