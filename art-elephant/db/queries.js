@@ -20,7 +20,8 @@ const getUsers = (req, res, next) => {
 
 const loginUser = (req, res, next) => {
     console.log("req:", req.body)
-    db.any('SELECT password FROM users WHERE email=${email}', req.body)
+    let email = req.body.email.toLowerCase();
+    db.any('SELECT password FROM users WHERE email=${email}', {email: email})
         .then(data => {
             console.log("data:", data);
             let compare = authHelpers.comparePass(req.body.password, data[0].password);
