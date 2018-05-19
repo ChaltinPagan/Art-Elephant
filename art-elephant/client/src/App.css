@@ -1,3 +1,9 @@
+/* Color palette: https://coolors.co/fbf5f3-8ba89b-522b47-7b0828-0f0e0e
+  White Smoke #fbf5f3 (background)
+  Pewter Blue #8daa9d (links)
+  Wine Dregs #522b47 (nav bar)
+*/
+
 .App {
   text-align: center;
   font-size: 16px;
@@ -9,10 +15,14 @@
 
 body {
   font-family: 'Do Hyeon', sans-serif;
+  background-color: #fbf5f3;
+  color: #0f0e0e;
 }
 
 /* Navigation */
 #nav {
+  background-color: #522b47;
+  border-color: #522b47;;
   border-radius: 0;
 }
 
@@ -22,7 +32,7 @@ body {
 }
 
 #nav a {
-  color: white;
+  color: #fbf5f3;
   text-decoration: none;
 }
 
@@ -32,4 +42,12 @@ body {
 
 #appName {
   margin-top: -5px;
+}
+
+a {
+  color: #8daa9d;
+}
+
+a:hover {
+  color: #8daa9d;
 }
