@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS elephant;
 CREATE DATABASE elephant;
 
-\c artelephant;
+\c elephant;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
