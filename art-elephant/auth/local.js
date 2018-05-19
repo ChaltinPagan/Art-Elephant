@@ -12,11 +12,15 @@ const options = {};
 init();
 
 passport.use(new LocalStrategy(options, (email, done) => {
-  db.one('SELECT email, password FROM users WHERE email=$1', [email])
+  console.log("email:", email)
+  db.one('SELECT * FROM users WHERE email=${email}', { email: email })
     .then((user) => {
+      console.log("user:", user)
       if (!user) {
         return done(null, false);
-      } else if (!authHelpers.comparePass(password, user.password)) {
+      } 
+      
+      if (!authHelpers.comparePass(password, user.password)) {
         return done(null, false);
       } else {
         return done(null, user);
