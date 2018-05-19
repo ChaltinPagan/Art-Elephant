@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Alert, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 class NewUser extends Component {
@@ -11,7 +12,7 @@ class NewUser extends Component {
             email: "",
             password: "",
             message: "",
-            submit: false
+            submit: null
         };
     }
 
@@ -54,7 +55,7 @@ class NewUser extends Component {
                     last_name: "",
                     email: "",
                     password: "",
-                    message: "Welcome new user!",
+                    message: "Welcome to Art Elephant!",
                     submit: true
                 });
             })
@@ -65,7 +66,8 @@ class NewUser extends Component {
                     last_name: "",
                     email: "",
                     password: "",
-                    message: "Error inserting user. Email already taken."
+                    message: "Error inserting user. Email already taken.",
+                    submit: false
                 });
             });
     };
@@ -73,33 +75,50 @@ class NewUser extends Component {
     render() {
         const { first_name, last_name, email, password, message, submit } = this.state;
         console.log("new user submit:", submit);
-        if (!submit) {
+        // if (!submit) {
             return (
                 <div>
                     <h1>Create an Account</h1>
-                    <form onSubmit={this.submitForm} >
-                        <p>First Name:</p>
-                        <input type="text" name="first_name" value={first_name} onChange={this.handleChange} />
-                        <p>Last Name:</p>
-                        <input type="text" name="last_name" value={last_name} onChange={this.handleChange} />
-                        <p>Email:</p>
-                        <input type="text" name="email" value={email} onChange={this.handleChange} />
-                        <p>Password:</p>
-                        <input type="password" name="password" value={password} onChange={this.handleChange} />
-                        <br />
-                        <input type="submit" value="Submit" />
-                        <p>{message}</p>
+                    <form>
+                        <FormGroup>
+                            <ControlLabel>First Name</ControlLabel>
+                            <FormControl type="text" name="first_name" value={first_name} onChange={this.handleChange} />
+                            
+                            <ControlLabel>Last Name</ControlLabel>
+                            <FormControl type="text" name="last_name" value={last_name} onChange={this.handleChange} />
+
+                            <ControlLabel>Email</ControlLabel>
+                            <FormControl type="text" name="email" value={email} onChange={this.handleChange} />
+                            
+                            <ControlLabel>Password</ControlLabel>
+                            <FormControl type="password" name="password" value={password} onChange={this.handleChange} />
+                            
+                            {/* <input type="submit" value="Submit" /> */}
+                            <Button onClick={this.submitForm} >Submit</Button>
+                            {/* <p>{message}</p> */}
+
+                            <div>
+                                {submit ? 
+                                    <Alert bsStyle="success">
+                                        <p>{message}</p>
+                                    </Alert> : (submit === false) ?
+                                    <Alert bsStyle="danger">
+                                        <p>{message}</p>
+                                    </Alert> : ""
+                                }
+                            </div>
+                        </FormGroup>
                     </form>
                 </div>
             )
-        } else {
-            return(
-                <div>
-                    <h1>Create an Account</h1>
-                    <p>Welcome to Art Elephant!</p>
-                </div>
-            )
-        }
+        // } else {
+        //     return(
+        //         <div>
+        //             <h1>Create an Account</h1>
+        //             <p>Welcome to Art Elephant!</p>
+        //         </div>
+        //     )
+        // }
 
     }
 }
