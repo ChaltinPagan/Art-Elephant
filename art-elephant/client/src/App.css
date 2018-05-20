@@ -2,16 +2,13 @@
   White Smoke #fbf5f3 (background)
   Pewter Blue #8daa9d (links)
   Wine Dregs #522b47 (nav bar)
+  Smokey Black #0f0e0e (text)
 */
 
 .App {
   text-align: center;
   font-size: 16px;
 }
-
-/* .App-title {
-  font-size: 1.5em;
-} */
 
 body {
   font-family: 'Do Hyeon', sans-serif;
@@ -20,15 +17,26 @@ body {
 }
 
 /* Navigation */
-#nav {
+.navbar {
   background-color: #522b47;
-  border-color: #522b47;;
-  border-radius: 0;
+  padding: 0;
 }
 
-#nav p {
-  padding: 15px;
-  margin: 0;
+.navbar-brand {
+  color: #fbf5f3;
+  margin-left: 1em;
+}
+
+.navbar-brand:hover {
+  color: #fbf5f3;
+}
+
+.elephant {
+  margin-right: 0.5em;
+}
+
+.login {
+  align-content: right;
 }
 
 #nav a {
@@ -36,18 +44,16 @@ body {
   text-decoration: none;
 }
 
-#appName img {
-  margin-right: 5px;
-}
-
-#appName {
-  margin-top: -5px;
-}
-
+/* All links. Excluding navigation links. */
 a {
   color: #8daa9d;
 }
 
 a:hover {
   color: #8daa9d;
+}
+
+/* Page content. */
+.content {
+  margin-top: 25px;
 }

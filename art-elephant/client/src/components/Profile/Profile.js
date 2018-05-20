@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Tabs, Tab, Button } from 'react-bootstrap';
 import axios from 'axios';
 import Slideshow from './Slideshow';
-// import Statement from './Statement';
-import Map from './Map';
+import Info from './Info';
 import './Profile.css';
 
 class Profile extends Component {
@@ -33,35 +31,20 @@ class Profile extends Component {
         const { profile } = this.state;
         if (profile) {
             return(
-                <div className="grid-container">
+                <div className="content grid-container">
                     <div className="title">
                         <h2>{`${profile.first_name} ${profile.last_name}`}</h2>
                         <h3>{`Medium: ${profile.medium}`}</h3>
                     </div>
     
                     <div className="back">
-                        <Button componentClass="p" id="back_button">
-                            <Link to='/registry'>Back</Link>
-                        </Button>
+                        <Link className="btn btn-outline-dark" to="/registry" role="button">Back</Link>
                     </div>
     
                     <Slideshow />
     
-                    <div className="info">
-                        <Tabs defaultActiveKey={1} id="profile-tabs" >
-                            <Tab eventKey={1} title="Statement">
-                                {/* <Statement /> */}
-                                <p>{profile.statement}</p>
-                            </Tab>
-                            <Tab eventKey={2} title="Studio Location">
-                                <p>{profile.address}</p>
-                                <Map location={profile.address}/>
-                            </Tab>
-                            <Tab eventKey={3} title="Contact">
-                                <p>Contact here</p>
-                            </Tab>
-                        </Tabs>
-                    </div>
+                    <Info profile={profile} />
+
                 </div>
             )
         } else {

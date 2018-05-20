@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { DropdownButton, MenuItem } from 'react-bootstrap';
 import registryHelpers from './registry-helpers';
 
 const alphabet = registryHelpers.alphabet();
@@ -16,30 +15,43 @@ const Filters = () => {
                         </li>
                     )}
                 </ul>
-            
-            <DropdownButton
-                title="Medium"
-                id='split-button-basic-default' >
-                <MenuItem eventKey="1">Action</MenuItem>
-                <MenuItem eventKey="2">Another action</MenuItem>
-                <MenuItem eventKey="3">Something else here</MenuItem>
-            </DropdownButton>
 
-            <DropdownButton
-                title="Genre"
-                id='split-button-basic-default' >
-                <MenuItem eventKey="1">Action</MenuItem>
-                <MenuItem eventKey="2">Another action</MenuItem>
-                <MenuItem eventKey="3">Something else here</MenuItem>
-            </DropdownButton>
+            <div className="dropdown">
+                <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Medium
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <p className="dropdown-item">Action</p>
+                    <p className="dropdown-item">Another action</p>
+                    <p className="dropdown-item">Something else here</p>
+                </div>
+            </div>
 
-            <DropdownButton
-                title="Location"
-                id='split-button-basic-default' >
-                <MenuItem eventKey="1">Action</MenuItem>
-                <MenuItem eventKey="2">Another action</MenuItem>
-                <MenuItem eventKey="3">Something else here</MenuItem>
-            </DropdownButton>
+            <div className="dropdown">
+                <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Genre
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <p className="dropdown-item">Action</p>
+                    <p className="dropdown-item">Another action</p>
+                    <p className="dropdown-item">Something else here</p>
+                </div>
+            </div>
+
+            <div className="dropdown">
+                <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Location
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <p className="dropdown-item">Action</p>
+                    <p className="dropdown-item">Another action</p>
+                    <p className="dropdown-item">Something else here</p>
+                </div>
+            </div>
+
         </div>
     )
 }
