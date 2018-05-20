@@ -5,43 +5,9 @@
 }
 
 .slideshow {
-    height: 80vh;
     width: 500px;
     grid-area: slideshow;
 }
-
-/* .slideshow img {
-    margin: auto;
-    height: 60vh;
-} */
-
-/* .carousel-caption {
-    position: static;
-    top: 100px;
-    color: black;
-    text-shadow: none;
-} */
-
-/* .carousel-indicators ol {
-    position: relative;
-    margin-top: 100px;
-} */
-
-/* .carousel-indicators li {
-    color: black;
-    background-color: black;
-    border: black;
-} */
-
-/* .carousel-indicators .active {
-    color: white;
-    background-color: black;
-    border: black;
-} */
-
-/* .carousel-control {
-    text-shadow: none;
-} */
 
 .back {
     grid-area: back;
@@ -54,15 +20,6 @@
     grid-area: info;
 }
 
-#profile-tabs p {
-    margin: 1em;
-    text-align: left;
-}
-
-#profile-tabs li {
-    margin: 0;
-}
-
 .grid-container {
     width: 80vw;
     margin: auto;
@@ -71,4 +28,12 @@
         'back title'
         'slideshow info';
     grid-gap: 2em;
+}
+
+.card {
+    text-align: left;
+}
+
+h5 .btn {
+    width: inherit;
 }

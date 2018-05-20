@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class NewUser extends Component {
@@ -27,7 +27,7 @@ class NewUser extends Component {
 
     handleChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.id]: e.target.value
         });
     }
 
@@ -51,22 +51,14 @@ class NewUser extends Component {
             .then(res => {
                 console.log("new user:", res.data);
                 this.setState({
-                    first_name: "",
-                    last_name: "",
-                    email: "",
-                    password: "",
                     message: "Welcome to Art Elephant!",
                     submit: true
                 });
             })
             .catch(err => {
-                console.log("error:", "Error inserting user. Email already taken.");
+                console.log("error:", "Email already taken.");
                 this.setState({
-                    first_name: "",
-                    last_name: "",
-                    email: "",
-                    password: "",
-                    message: "Error inserting user. Email already taken.",
+                    message: "Email already taken.",
                     submit: false
                 });
             });
@@ -74,52 +66,58 @@ class NewUser extends Component {
 
     render() {
         const { first_name, last_name, email, password, message, submit } = this.state;
-        console.log("new user submit:", submit);
-        // if (!submit) {
-            return (
+        return (
+            <div className='content'>
+                <h1>Create an Account</h1>
+
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="first_name">First Name</label>
+                        <input type="text" className="form-control" id="first_name" 
+                            value={first_name} onChange={this.handleChange} />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="last_name">Last Name</label>
+                        <input type="email" className="form-control" id="last_name" 
+                            value={last_name} onChange={this.handleChange} />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input type="text" className="form-control" id="email" 
+                            value={email} onChange={this.handleChange} />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input type="password" className="form-control" id="password" 
+                            value={password} onChange={this.handleChange} />
+                    </div>
+
+                    <p>Already have an account?{" "}
+                        <Link to="/login">Login here.</Link>
+                    </p>
+
+                    <button type="button" className="btn btn-outline-dark" onClick={this.submitForm} >
+                        Submit
+                    </button>
+                    
+                </form>
+
                 <div>
-                    <h1>Create an Account</h1>
-                    <form>
-                        <FormGroup>
-                            <ControlLabel>First Name</ControlLabel>
-                            <FormControl type="text" name="first_name" value={first_name} onChange={this.handleChange} />
-                            
-                            <ControlLabel>Last Name</ControlLabel>
-                            <FormControl type="text" name="last_name" value={last_name} onChange={this.handleChange} />
-
-                            <ControlLabel>Email</ControlLabel>
-                            <FormControl type="text" name="email" value={email} onChange={this.handleChange} />
-                            
-                            <ControlLabel>Password</ControlLabel>
-                            <FormControl type="password" name="password" value={password} onChange={this.handleChange} />
-                            
-                            {/* <input type="submit" value="Submit" /> */}
-                            <Button onClick={this.submitForm} >Submit</Button>
-                            {/* <p>{message}</p> */}
-
-                            <div>
-                                {submit ? 
-                                    <Alert bsStyle="success">
-                                        <p>{message}</p>
-                                    </Alert> : (submit === false) ?
-                                    <Alert bsStyle="danger">
-                                        <p>{message}</p>
-                                    </Alert> : ""
-                                }
-                            </div>
-                        </FormGroup>
-                    </form>
+                    {submit ? 
+                        <div className="alert alert-success" role="alert">
+                            <p>{message}</p>
+                        </div> : (submit === false) ?
+                        <div className="alert alert-danger" role="alert">
+                            <p>{message}</p>
+                        </div> : ""
+                    }
                 </div>
-            )
-        // } else {
-        //     return(
-        //         <div>
-        //             <h1>Create an Account</h1>
-        //             <p>Welcome to Art Elephant!</p>
-        //         </div>
-        //     )
-        // }
 
+            </div>
+        )
     }
 }
 

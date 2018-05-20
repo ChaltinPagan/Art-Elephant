@@ -11,7 +11,7 @@ class FAQ extends Component {
 
     render(){
         return(
-            <div>
+            <div className='content'>
                 <h1>FAQ</h1>
                 <Slideshow />
             </div>

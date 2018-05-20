@@ -25,13 +25,7 @@ h3 {
     display: inline;
 }
 
-.btn-group {
-    margin: 0 20px;
+.dropdown {
+    display: inline-block;
+    margin: 0 1em 1em;
 }
-
-/* .dropdown-menu li:hover {
-    margin: 0;
-    padding: 10px;
-    width: auto;
-    background-color: rgb(230, 230, 230);
-} */

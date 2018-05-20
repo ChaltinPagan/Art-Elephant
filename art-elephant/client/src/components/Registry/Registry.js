@@ -39,7 +39,7 @@ class Registry extends Component {
 
     render(){
         return(
-            <div className='registry'>
+            <div className='content registry'>
                 <h1>Artist Registry</h1>
 
                 <Switch>

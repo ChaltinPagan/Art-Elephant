@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import Home from './components/Home/Home';
 import Registry from './components/Registry/Registry';
 import Opportunities from './components/Opportunities/Opportunities';
@@ -16,31 +15,37 @@ class App extends Component {
     return (
       <div className="App">
 
-        <Navbar inverse collapseOnSelect id="nav">
-          <Navbar.Header id="appName">
-            <Navbar.Brand>
-              <p>
-              <Link to="/">
-                <img alt="elephant" src="https://png.icons8.com/material/35/ffffff/elephant.png" />
-                Art Elephant
-              </Link>
-              </p>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav>
-              <NavItem eventKey={1} componentClass="p" ><Link to="/registry">Artist Registry</Link></NavItem>
-              <NavItem eventKey={2} componentClass="p" ><Link to="/opportunities">Opportunities</Link></NavItem>
-              <NavItem eventKey={3} componentClass="p" ><Link to="/about">About</Link></NavItem>
-              <NavItem eventKey={4} componentClass="p" ><Link to="/faq">FAQ</Link></NavItem>
-              {/* <NavItem eventKey={5} componentClass="p" ><Link to="/profile">Sample Profile</Link></NavItem> */}
-            </Nav>
-            <Nav pullRight>
-              <NavItem eventKey={1} componentClass="p" ><Link to="/login">Login</Link></NavItem>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+        <nav className="navbar navbar-expand-lg">
+          <Link to='/' className="navbar-brand">
+            <img className="elephant" alt="elephant" src="https://png.icons8.com/material/35/ffffff/elephant.png" />
+            Art Elephant
+          </Link>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon">
+              <img alt="menu" src="https://png.icons8.com/material/30/ffffff/menu.png" />
+            </span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="nav">
+            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li className="nav-item">
+                <Link to='/registry' className='nav-link'>Registry</Link>
+              </li>
+              <li className="nav-item">
+                <Link to='/opportunities' className='nav-link'>Opportunities</Link>
+              </li>
+              <li className="nav-item">
+                <Link to='/about' className='nav-link'>About</Link>
+              </li>
+              <li className="nav-item">
+                <Link to='/faq' className='nav-link'>FAQ</Link>
+              </li>
+              <li className="nav-item">
+                <Link to='/login' className='nav-link'>Login</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
         <Switch>
           <Route exact path="/" component={Home} />

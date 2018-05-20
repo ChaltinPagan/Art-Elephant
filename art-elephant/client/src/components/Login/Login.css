@@ -7,3 +7,12 @@
     width: 20vw;
     margin: 20px auto;
 }
+
+.btn {
+    background-color: #ffffff;
+}
+
+.btn:hover {
+    background-color: #8daa9d;
+    border-color: #8daa9d;
+}

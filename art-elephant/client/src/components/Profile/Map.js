@@ -18,7 +18,6 @@ class Map extends Component {
     }
         getCoordinates = () => {
             const { location, api_key } = this.state;
-            console.log("key:", api_key);
             axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${api_key}`)
                 .then( res => {
                     const { lat, lng } = res.data.results[0].geometry.location;
@@ -38,14 +37,17 @@ class Map extends Component {
 
     render() {
         const { lat, lng, api_key } = this.state;
+        console.log("lat:", lat);
+        console.log("lng:", lng);
         const center = {lat: lat, lng: lng};
+        console.log("center:", center);
             return (
                 // Important! Always set the container height explicitly
                 <div style={{ height: '50vh', width: '100%' }}>
                     <GoogleMapReact
                         bootstrapURLKeys={{ key: api_key }}
                         center={center}
-                        defaultZoom={13}
+                        defaultZoom={15}
                     >
                         <MapMarker
                             lat={lat}
