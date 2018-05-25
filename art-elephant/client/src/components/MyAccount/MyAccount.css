@@ -1,0 +1,13 @@
+/* Styling for MyAccount.js collapse component. */
+.my-account {
+    width: 70vw;
+    margin: auto;
+}
+
+form {
+    text-align: center;
+}
+
+.logout {
+    margin-bottom: 1em;
+}

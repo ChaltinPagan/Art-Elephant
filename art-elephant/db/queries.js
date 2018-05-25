@@ -19,7 +19,6 @@ const getUsers = (req, res, next) => {
 };
 
 const loginUser = (req, res, next) => {
-    console.log("req:", req.body)
     let email = req.body.email.toLowerCase();
     db.any('SELECT password FROM users WHERE email=${email}', {email: email})
         .then(data => {
@@ -39,7 +38,7 @@ const loginUser = (req, res, next) => {
                             status: 'error',
                             data: user,
                             message: 'Incorrect password'
-                        })
+                        });
                 }
             })(req, res, next);
         })
@@ -49,9 +48,22 @@ const loginUser = (req, res, next) => {
                 .json({
                     status: 'error',
                     error: err
-                })
+                });
         });
-}
+};
+
+const getSingleUser = (req, res, next) => {
+    db.any('SELECT id, first_name, last_name, email FROM users WHERE email=${email}', req.params)
+        .then(data => {
+            res.status(200)
+            .send({
+                single_user: data
+            });
+        })
+        .catch((err) => {
+            return next(err);
+        });
+};
 
 const registerUser = (req, res, next) => {
     return authHelpers.createUser(req)
@@ -73,9 +85,9 @@ const registerUser = (req, res, next) => {
                 .json({
                     status: 'error',
                     error: 'Error inserting user. Email already taken.'
-                })
+                });
         });
-}
+};
 
 const getArtists = (req, res, next) => {
     // Exclude users.password from query
@@ -123,6 +135,7 @@ const getSingleArtist = (req, res, next) => {
 module.exports = {
     getUsers,
     loginUser,
+    getSingleUser,
     registerUser,
     getArtists,
     getSingleArtist

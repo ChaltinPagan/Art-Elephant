@@ -36,13 +36,13 @@ app.get('/', function (req, res, next) {
 });
 
 //Expects to recieve the error, so err is first arg in function
-app.get('*', (err, req, res) => {
-    if (!err) {
-        res.status(404).send('Error!');
-    }
+// app.get('*', (err, req, res) => {
+//     if (!err) {
+//         res.status(404).send('Error!');
+//     }
 
-    res.status(500).send(`Error! Description: ${err}`);
-});
+//     res.status(500).send(`Error! Description: ${err}`);
+// });
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
