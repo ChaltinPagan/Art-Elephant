@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import Alert from './Alert';
 
 class NewUser extends Component {
     constructor() {
@@ -66,6 +67,7 @@ class NewUser extends Component {
 
     render() {
         const { first_name, last_name, email, password, message, submit } = this.state;
+        console.log("submit:", submit)
         return (
             <div className='content'>
                 <h1>Create an Account</h1>
@@ -105,16 +107,10 @@ class NewUser extends Component {
                     
                 </form>
 
-                <div>
-                    {submit ? 
-                        <div className="alert alert-success" role="alert">
-                            <p>{message}</p>
-                        </div> : (submit === false) ?
-                        <div className="alert alert-danger" role="alert">
-                            <p>{message}</p>
-                        </div> : ""
-                    }
-                </div>
+                <Route path="/new-user" render={ () => (
+                    submit ? <Redirect to={{pathname: "/my-account", state: {email: email}}} /> 
+                    : <Alert submit={submit} message={message} /> 
+                )} />
 
             </div>
         )
