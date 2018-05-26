@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ArtistProfile = () => {
+const MyArtistProfile = () => {
     return(
         <div></div>
     )
 }
 
-export default ArtistProfile;
+export default MyArtistProfile;

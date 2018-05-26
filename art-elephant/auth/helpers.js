@@ -4,15 +4,15 @@ const bcrypt = require('bcryptjs');
 // var db = pgp(connectionString);
 const db = require('./db');
 
-function comparePass(userPassword, databasePassword) {
+const comparePass = (userPassword, databasePassword) => {
   console.log("comparePass:" + userPassword);
   console.log("databasepw:", databasePassword);
   let compare = bcrypt.compareSync(userPassword, databasePassword);
   console.log("compare:" + compare);
   return compare;
-}
+};
 
-function createUser(req) {
+const createUser = (req) => {
   const salt = bcrypt.genSaltSync();
   const hash = bcrypt.hashSync(req.body.password, salt);
   let email = req.body.email.toLowerCase();
@@ -28,10 +28,20 @@ function createUser(req) {
     .then( user => {
       console.log('user:', user);
       return req.body.email;
-    })
-}
+    });
+};
+
+const encryptNewPassword = (req) => {
+  const salt = bcrypt.genSaltSync();
+  const hash = bcrypt.hashSync(req.body.password, salt);
+  return db.any('UPDATE users SET password=${password} WHERE id=${id}', {password: hash, id: req.body.id})
+    .then( data => {
+      return "Password updated.";
+    });
+};
 
 module.exports = {
   comparePass,
-  createUser
+  createUser, 
+  encryptNewPassword
 };

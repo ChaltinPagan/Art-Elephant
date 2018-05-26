@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db/queries');
+const db = require('../db/artist-queries');
 
 // router.get('/', function (req, res, next) {
 //     res.send('Home');

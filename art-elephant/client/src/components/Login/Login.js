@@ -28,6 +28,8 @@ const Login = ({ email, password, submit, message, onChange, submitForm }) => {
                 <button type="button" className="btn btn-outline-dark" onClick={submitForm} >Submit</button>
             </form>
             
+            {/* Successful login will redirect user to My Account page.
+                If login is not successful, a message will appear and indicate incorrect password or email not on file. */}
             <Route path="/login" render={ () => (
                 submit ? <Redirect to="/my-account" /> 
                 : <Alert submit={submit} message={message} /> 
