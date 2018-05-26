@@ -16,6 +16,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      user: null,
       email: "",
       password: "",
       message: "",
@@ -40,15 +41,15 @@ class App extends Component {
       .then(res => {
         console.log("login res:", res);
         if (res.status !== 200) {
-          this.setState({ message: "Incorrect password.", submit: false });
+          this.setState({ user: res.data.user, message: "Incorrect password.", submit: false });
         } else {
-          this.setState({ password: "", message: "Welcome Back!", submit: true });
+          this.setState({ user: res.data.user, password: "", message: "Welcome Back!", submit: true });
         }
 
       })
       .catch(err => {
-        console.log("error:", "User does not exist.");
-        this.setState({ message: "User does not exist.", submit: false });
+        console.log("error:", "Email not not file. User does not exist.");
+        this.setState({ message: "Email not not file. User does not exist.", submit: false });
       });
   };
 
@@ -57,8 +58,8 @@ class App extends Component {
   }
 
   renderLogin = () => {
-    const { email, password, submit, message } = this.state;
-    return <Login email={email}
+    const { user, password, submit, message } = this.state;
+    return <Login user={user}
             password={password}
             submit={submit}
             message={message}
@@ -67,8 +68,8 @@ class App extends Component {
   }
 
   renderMyAccount = () => {
-    const { email } = this.state;
-    return <MyAccount email={email} onClick={this.handleLogout} />
+    const { user } = this.state;
+    return <MyAccount user={user} onClick={this.handleLogout} />
   }
 
   render() {

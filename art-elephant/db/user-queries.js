@@ -6,7 +6,7 @@ const authHelpers = require('../auth/helpers');
 const passport = require('../auth/local');
 
 const getUsers = (req, res, next) => {
-    db.any('SELECT * FROM users')
+    db.any('SELECT * FROM users ORDER BY id ASC')
         .then((data) => {
             res.status(200)
                 .send({
@@ -20,7 +20,7 @@ const getUsers = (req, res, next) => {
 
 const loginUser = (req, res, next) => {
     let email = req.body.email.toLowerCase();
-    db.any('SELECT password FROM users WHERE email=${email}', {email: email})
+    db.any('SELECT * FROM users WHERE email=${email}', {email: email})
         .then(data => {
             console.log("data:", data);
             let compare = authHelpers.comparePass(req.body.password, data[0].password);
@@ -29,14 +29,14 @@ const loginUser = (req, res, next) => {
                     res.status(200)
                         .json({
                             status: 'success',
-                            data: user,
+                            user: data[0].id,
                             message: 'Logged in'
                         });
                 } else if (!compare) {
                     res.status(204)
                         .json({
                             status: 'error',
-                            data: user,
+                            user: data[0].id,
                             message: 'Incorrect password'
                         });
                 }
@@ -53,7 +53,7 @@ const loginUser = (req, res, next) => {
 };
 
 const getSingleUser = (req, res, next) => {
-    db.any('SELECT id, first_name, last_name, email FROM users WHERE email=${email}', req.params)
+    db.any('SELECT id, first_name, last_name, email FROM users WHERE id=${user_id}', req.params)
         .then(data => {
             res.status(200)
             .send({
@@ -61,6 +61,34 @@ const getSingleUser = (req, res, next) => {
             });
         })
         .catch((err) => {
+            return next(err);
+        });
+};
+
+const updateUser = (req, res, next) => {
+    db.any('UPDATE users SET first_name=${first_name}, last_name=${last_name}, email=${email} WHERE id=${id}', req.body)
+        .then( data => {
+            res.status(200)
+                .json({
+                    status: "success",
+                    message: "Profile updated."
+                });
+        })
+        .catch( err => {
+            return next(err);
+        });
+};
+
+const updatePassword = (req, res, next) => {
+    return authHelpers.encryptNewPassword(req)
+        .then( data => {
+            res.status(200)
+                .json({
+                    status: "success",
+                    message: data
+                });
+        })
+        .catch( err => {
             return next(err);
         });
 };
@@ -89,54 +117,13 @@ const registerUser = (req, res, next) => {
         });
 };
 
-const getArtists = (req, res, next) => {
-    // Exclude users.password from query
-    db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address,
-        users.first_name, users.last_name, users.email 
-        FROM artists 
-        LEFT JOIN users ON artists.user_id=users.id`)
-        .then((data) => {
-            res.status(200)
-                .send({
-                    artists: data
-                });
-        })
-        .catch((err) => {
-            return next(err);
-        });
-};
 
-const getSingleArtist = (req, res, next) => {
-    console.log("sigle:", req.params)
-    // Exclude users.password from query
-    db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address, 
-        users.first_name, users.last_name, users.email 
-        FROM artists 
-        LEFT JOIN users ON artists.user_id=users.id `
-        + 'WHERE artists.id=${id}', req.params)
-        .then((data) => {
-            if (data.length) {
-                res.status(200)
-                    .send({
-                        single_artist: data
-                    });
-            } else {
-                res.status(404)
-                    .send({
-                        message: "No artist with this ID"
-                    });
-            }
-        })
-        .catch((err) => {
-            return next(err);
-        });
-};
 
 module.exports = {
     getUsers,
     loginUser,
     getSingleUser,
-    registerUser,
-    getArtists,
-    getSingleArtist
+    updateUser,
+    updatePassword,
+    registerUser
 };
