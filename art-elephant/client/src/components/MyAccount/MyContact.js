@@ -23,25 +23,33 @@ class MyContact extends Component {
 
     handleSubmit = () => {
         const { id, first_name, last_name, email } = this.state;
-        axios.put('users/update', {
-            id: id,
-            first_name: first_name,
-            last_name: last_name,
-            email: email.toLowerCase()
-        }).then( res => {
-            console.log("update res:", res);
-            this.setState({
-                submit: true,
-                message: res.data.message
-            })
-        }).catch( err => {
-            console.log("Error updating user:", err);
+
+        if (!email) {
             this.setState({
                 submit: false,
-                message: "Error updating user."
-            })
-        })
-        
+                message: "Email cannot be blank."
+            });
+        } else {
+            axios.put('users/update', {
+                id: id,
+                first_name: first_name,
+                last_name: last_name,
+                email: email.toLowerCase()
+            }).then( res => {
+                console.log("update res:", res);
+                this.setState({
+                    submit: true,
+                    message: res.data.message
+                });
+            }).catch( err => {
+                console.log("Error updating user:", err);
+                this.setState({
+                    submit: false,
+                    message: "Error updating user."
+                });
+            });
+        }
+
     }
 
     render() {
