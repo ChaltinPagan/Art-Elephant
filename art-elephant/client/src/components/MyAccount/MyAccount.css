@@ -11,3 +11,16 @@ form {
 .logout {
     margin-bottom: 1em;
 }
+
+.artist-profile input, .artist-profile textarea {
+    width: 40vw;
+}
+
+#statement {
+    height: 10vw;
+}
+
+/* Artist Profile "Medium" checkboxes. */
+input[type=checkbox] {
+    width: auto;
+}
