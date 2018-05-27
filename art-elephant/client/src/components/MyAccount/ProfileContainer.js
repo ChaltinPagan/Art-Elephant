@@ -1,6 +1,7 @@
 import React from 'react';
 import MyContact from './MyContact';
 import UpdatePassword from './UpdatePassword';
+import MyArtistProfile from './MyArtistProfile';
 
 const ProfileContainer = ({ user, first_name, onChange, submitForm }) => {
     return (
@@ -48,7 +49,7 @@ const ProfileContainer = ({ user, first_name, onChange, submitForm }) => {
                 </div>
                 <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div className="card-body">
-                        Artist form goes here
+                        <MyArtistProfile user={user} />
                     </div>
                 </div>
             </div>
