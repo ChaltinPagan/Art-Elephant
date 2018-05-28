@@ -3,7 +3,7 @@ const authHelpers = require('../auth/helpers');
 
 const getArtists = (req, res, next) => {
     // Exclude users.password from query
-    db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address,
+    db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address, artists.images,
         users.first_name, users.last_name, users.email 
         FROM artists 
         LEFT JOIN users ON artists.user_id=users.id`)
@@ -19,9 +19,8 @@ const getArtists = (req, res, next) => {
 };
 
 const getSingleArtist = (req, res, next) => {
-    console.log("sigle:", req.params)
     // Exclude users.password from query
-    db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address, 
+    db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address, artists.images,
         users.first_name, users.last_name, users.email 
         FROM artists 
         LEFT JOIN users ON artists.user_id=users.id `
@@ -45,8 +44,7 @@ const getSingleArtist = (req, res, next) => {
 };
 
 const getArtistByUserID = (req, res, next) => {
-    console.log("params:", req.params);
-    db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address, 
+    db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address, artists.images,
         users.first_name, users.last_name, users.email 
         FROM artists 
         LEFT JOIN users ON artists.user_id=users.id `
