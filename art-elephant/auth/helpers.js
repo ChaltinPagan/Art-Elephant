@@ -40,8 +40,16 @@ const encryptNewPassword = (req) => {
     });
 };
 
+const createArtist = (req) => {
+  db.any('INSERT INTO artists artists (user_id, medium, statement, address) VALUES (${user_id}, ${medium}, ${statement}, ${address}', req.body)
+  .then( artist => {
+      return "Artist profile added.";
+  });
+};
+
 module.exports = {
   comparePass,
   createUser, 
-  encryptNewPassword
+  encryptNewPassword,
+  createArtist
 };
