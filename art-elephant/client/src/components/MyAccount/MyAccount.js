@@ -9,9 +9,7 @@ class MyAccount extends Component {
         super(props);
         this.state = {
             user_id: 1,
-            user: null,
-            first_name: "",
-            last_name: ""
+            user: null
         };
     }
 
@@ -21,8 +19,7 @@ class MyAccount extends Component {
             .then( res => {
                 let user = res.data.single_user[0];
                 this.setState({
-                    user: user,
-                    first_name: user.first_name
+                    user: user
                 });
             })
     }
@@ -38,7 +35,7 @@ class MyAccount extends Component {
     };
 
     render(){
-        const { user, first_name } = this.state;
+        const { user } = this.state;
         console.log("user:", user)
         if (!user) {
             return(
@@ -65,7 +62,6 @@ class MyAccount extends Component {
 
                     <ProfileContainer 
                         user={user} 
-                        first_name={first_name}
                         onChange={this.handleChange} 
                         submitForm={this.submitForm} />
 

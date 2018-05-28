@@ -1,4 +1,5 @@
 const db = require('../auth/db');
+const authHelpers = require('../auth/helpers');
 
 const getArtists = (req, res, next) => {
     // Exclude users.password from query
@@ -66,10 +67,47 @@ const getArtistByUserID = (req, res, next) => {
         .catch((err) => {
             return next(err);
         });
-}
+};
+
+const addArtistProfile = (req, res, next) => {
+    return authHelpers.createArtist(req)
+        .then( res => {
+            res.status(200)
+                .json({
+                    status: 'success',
+                    message: res
+                });
+        })
+        .catch( err => {
+            res.status(500)
+                .json({
+                    status: 'error',
+                    error: 'Error inserting artist.'
+                });
+        });
+};
+
+const getArtistImages = (req, res, next) => {
+    console.log("image user:", req.params)
+    db.any('SELECT * FROM images WHERE user_id=${user_id}', req.params)
+        .then( data => {
+            res.status(200)
+                .send({
+                    images: data
+                });
+        })
+        .catch( err => {
+            res.status(500)
+                .send({
+                    message: "No images for this user."
+                });
+        });
+};
 
 module.exports = {
     getArtists,
     getSingleArtist,
-    getArtistByUserID
+    getArtistByUserID,
+    addArtistProfile,
+    getArtistImages
 }

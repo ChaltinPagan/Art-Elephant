@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // import checkboxes from './Checkboxes';
+import MyImages from './MyImages';
 
 class MyArtistProfile extends Component {
     constructor(props){
@@ -11,7 +12,8 @@ class MyArtistProfile extends Component {
             id: "",
             medium: [],
             statement: "",
-            address: ""
+            address: "", 
+            message: ""
         };
     }
 
@@ -23,14 +25,14 @@ class MyArtistProfile extends Component {
                 if (res.status === 200){
                     this.setState({
                         id: res.data.artist[0].id,
-                        medium: ["Painting"],
+                        medium: [res.data.artist[0].medium],
                         statement: res.data.artist[0].statement,
                         address: res.data.artist[0].address
                     });
                 }
             })
             .catch( err => {
-                console.log("error:", err);
+                console.log("Error: User does not have an Artist Profile.", err);
             })
     }
 
@@ -64,49 +66,75 @@ class MyArtistProfile extends Component {
         }
     };
 
-    render(){
+    addArtistProfile = () => {
         const { id, medium, statement, address } = this.state;
+
+        if (statement.length > 1000) {
+            this.setState({
+                message: "Statement cannot exceed 1000 characters."
+            })
+        }
+
+        axios.post('artists/new', {
+            id: id,
+            medium: medium,
+            statement: statement,
+            address: address
+        })
+            .then( res => {
+                this.setState({
+                    message: res.data.message
+                })
+            })
+            .catch( err => {
+                this.setState({
+                    message: err.data.message
+                })
+            })
+    }
+
+    render(){
+        const { user_id, id, medium, statement, address } = this.state;
         console.log("state:", this.state);
         console.log("media:", medium)
-        if (!id) {
-            return <div>Loading</div>
-        } else {
-            return(
-                <form className="artist-profile">
-                    <div className="form-group">
-                        <label htmlFor="first_name">Medium</label><br />
-                        <small id="emailHelp" className="form-text text-muted">Choose all that apply.</small>
-                        <div id='medium'>    
-                            {this.media.map( (el, i) =>
-                                <div className="form-check form-check-inline" key={i}>
-                                    <input className="form-check-input" type="checkbox" id="inlineCheckbox1" 
-                                        value={el} checked={medium.includes(el)} onChange={this.handleMedia} />
-                                    <label className="form-check-label" htmlFor="inlineCheckbox1">{el}</label>
-                                </div>
-                            )}
-                        </div>
+        return(
+            <form className="artist-profile">
+                <div className="form-group">
+                    <label htmlFor="first_name">Medium</label><br />
+                    <small id="emailHelp" className="form-text text-muted">Choose all that apply.</small>
+                    <div id='medium'>    
+                        {this.media.map( (el, i) =>
+                            <div className="form-check form-check-inline" key={i}>
+                                <input className="form-check-input" type="checkbox" id="inlineCheckbox1" 
+                                    value={el} checked={medium.includes(el)} onChange={this.handleMedia} />
+                                <label className="form-check-label" htmlFor="inlineCheckbox1">{el}</label>
+                            </div>
+                        )}
                     </div>
+                </div>
 
-                    <div className="form-group">
-                        <label htmlFor="last_name">Statement</label>
-                        <small id="emailHelp" className="form-text text-muted">Max 1000 characters.</small>
-                        <textarea type="text" className="form-control" id="statement" 
-                            value={statement} onChange={this.handleChange}></textarea>
-                    </div>
+                <div className="form-group">
+                    <label htmlFor="last_name">Statement</label>
+                    <small id="emailHelp" className="form-text text-muted">Max 1000 characters.</small>
+                    <textarea type="text" className="form-control" id="statement" 
+                        value={statement} onChange={this.handleChange}></textarea>
+                </div>
 
-                    <div className="form-group">
-                        <label htmlFor="email">Studio Address</label>
-                        <small id="emailHelp" className="form-text text-muted">Optional.</small>
-                        <input type="email" className="form-control" id="adress" 
-                            value={address} onChange={this.handleChange} />
-                    </div>
+                <div className="form-group">
+                    <label htmlFor="email">Studio Address</label>
+                    <small id="emailHelp" className="form-text text-muted">
+                        Optional.
+                    </small>
+                    <input type="email" className="form-control" id="address" 
+                        value={address} placeholder="Example: 123 State Street, NY, NY 10001 or New York, NY." onChange={this.handleChange} />
+                </div>
 
-                    {id ? <button type="button" className="btn btn-outline-dark" onClick={this.handleSubmit} >Update</button> : 
-                        <button type="button" className="btn btn-outline-dark" onClick={this.handleSubmit} >Add Artist Info</button> }
-                
-                </form>
-            )
-        }
+                <MyImages user={user_id}/>
+                {id ? <button type="button" className="btn btn-outline-dark" onClick={this.handleSubmit} >Update</button> : 
+                    <button type="button" className="btn btn-outline-dark" onClick={this.handleSubmit} >Add Artist Info</button> }
+            
+            </form>
+        )
     }
 }
 
