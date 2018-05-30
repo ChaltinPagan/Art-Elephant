@@ -6,7 +6,8 @@ const getArtists = (req, res, next) => {
     db.any(`SELECT artists.id, artists.user_id, artists.medium, artists.statement, artists.address, artists.images,
         users.first_name, users.last_name, users.email 
         FROM artists 
-        LEFT JOIN users ON artists.user_id=users.id`)
+        LEFT JOIN users ON artists.user_id=users.id
+        ORDER BY id ASC`)
         .then((data) => {
             res.status(200)
                 .send({
@@ -68,15 +69,21 @@ const getArtistByUserID = (req, res, next) => {
 };
 
 const addArtistProfile = (req, res, next) => {
+    let bool;
     return authHelpers.createArtist(req)
         .then( res => {
-            res.status(200)
-                .json({
-                    status: 'success',
-                    message: res
-                });
+            console.log("new res:", res);
+            bool = res;
+            if (bool) {
+                res.status(200)
+                    .json({
+                        status: 'success',
+                        message: 'Artist profile added.'
+                    });
+            }
         })
         .catch( err => {
+            console.log("err:", err);
             res.status(500)
                 .json({
                     status: 'error',
@@ -84,6 +91,21 @@ const addArtistProfile = (req, res, next) => {
                 });
         });
 };
+
+const updateArtist = (req, res, next) => {
+    console.log("update artist:", req.body)
+    db.any('UPDATE artists SET medium=${medium}, statement=${statement}, address=${address}, images=${images} WHERE id=${id}', req.body)
+        .then( data => {
+            res.status(200)
+                .json({
+                    status: "success",
+                    message: "Artist Profile updated."
+                });
+        })
+        .catch( err => {
+            return next(err);
+        });
+}
 
 const getArtistImages = (req, res, next) => {
     console.log("image user:", req.params)
@@ -107,5 +129,6 @@ module.exports = {
     getSingleArtist,
     getArtistByUserID,
     addArtistProfile,
+    updateArtist,
     getArtistImages
 }
