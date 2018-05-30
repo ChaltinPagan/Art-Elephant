@@ -29,3 +29,13 @@ h3 {
     display: inline-block;
     margin: 0 1em 1em;
 }
+
+.artist-card {
+    width: 20vw;
+    display: inline-block;
+    margin: 1em;
+}
+
+.artist-card img {
+    clip: rect(0px,200px,200px,0px)!important;
+}
