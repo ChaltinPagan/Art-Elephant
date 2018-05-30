@@ -8,7 +8,7 @@ class MyAccount extends Component {
     constructor(props){
         super(props);
         this.state = {
-            user_id: 1,
+            user_id: this.props.user,
             user: null
         };
     }
@@ -37,6 +37,7 @@ class MyAccount extends Component {
     render(){
         const { user } = this.state;
         console.log("user:", user)
+        console.log("props:", this.props)
         if (!user) {
             return(
                 <div>

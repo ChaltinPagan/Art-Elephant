@@ -1,33 +1,31 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class MyImages extends Component {
     constructor(props){
         super(props);
         this.state = {
-            user_id: this.props.user,
-            images: []
+            images: this.props.images
         };
     }
 
-    getImages = () => {
-        const { user_id, images } = this.state;
-        axios.get(`artists/images/${user_id}`)
-            .then( res => {
-                let arr = res.data.images;
-                let newArr = arr.map(el => el.url);
-                this.setState({
-                    images: newArr
-                });
-            })
-            .catch( err => {
-                console.log("Error:", err);
-            })
-    }
+    // getImages = () => {
+    //     const { user_id, images } = this.state;
+    //     axios.get(`artists/images/${user_id}`)
+    //         .then( res => {
+    //             let arr = res.data.images;
+    //             let newArr = arr.map(el => el.url);
+    //             this.setState({
+    //                 images: newArr
+    //             });
+    //         })
+    //         .catch( err => {
+    //             console.log("Error:", err);
+    //         })
+    // }
 
-    componentDidMount = () => {
-        this.getImages();
-    }
+    // componentDidMount = () => {
+    //     this.getImages();
+    // }
 
     handleImage = (e) => {
         const { images } = this.state;
@@ -49,7 +47,7 @@ class MyImages extends Component {
                         Submit three(3) image URLs.
                     </small>
                         <input className="form-control" type="text" id={`image-1`} 
-                            placeholder="http://www.image.com" key={1} onChange={this.handleImage} />
+                            value={'stuff'} placeholder="http://www.image.com" key={1} onChange={this.handleImage} />
                         <input className="form-control" type="text" id={`image-2`} 
                             placeholder="http://www.image.com" key={2} onChange={this.handleImage} />
                         <input className="form-control" type="text" id={`image-3`} 

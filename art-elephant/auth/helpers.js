@@ -41,8 +41,10 @@ const encryptNewPassword = (req) => {
 };
 
 const createArtist = (req) => {
-  db.any('INSERT INTO artists artists (user_id, medium, statement, address) VALUES (${user_id}, ${medium}, ${statement}, ${address}', req.body)
-  .then( artist => {
+  console.log("create:", req.body);
+  return db.any('INSERT INTO artists (user_id, medium, statement, address, images) VALUES (${user_id}, ${medium}, ${statement}, ${address}, ${images})', req.body)
+  .then( data => {
+    console.log("new artist:", data)
       return "Artist profile added.";
   });
 };
