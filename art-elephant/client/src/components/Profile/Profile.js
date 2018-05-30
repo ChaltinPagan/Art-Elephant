@@ -29,6 +29,7 @@ class Profile extends Component {
 
     render(){
         const { profile } = this.state;
+        console.log("profile:", profile);
         if (profile) {
             return(
                 <div className="content grid-container">
@@ -41,7 +42,7 @@ class Profile extends Component {
                         <Link className="btn btn-outline-dark" to="/registry" role="button">Back</Link>
                     </div>
     
-                    <Slideshow />
+                    <Slideshow images={profile.images}/>
     
                     <Info profile={profile} />
 
