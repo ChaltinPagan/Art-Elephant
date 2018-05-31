@@ -7,7 +7,7 @@ import Alert from './Alert';
 class MyArtistProfile extends Component {
     constructor(props){
         super(props);
-        this.media = ["Painting", "Drawing", "Sculpture", "Mixed Media", "Performance", "Video", "Printmaking", "Installation"];
+        this.media = ["Painting", "Drawing", "Sculpture", "Mixed Media", "Performance", "Video", "Printmaking", "Installation", "Photography"];
         this.state = {
             user_id: this.props.user.id,
             id: "",
