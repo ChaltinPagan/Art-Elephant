@@ -29,14 +29,14 @@ const loginUser = (req, res, next) => {
                     res.status(200)
                         .json({
                             status: 'success',
-                            user: data[0].id,
+                            user: data[0].email,
                             message: 'Logged in'
                         });
                 } else if (!compare) {
                     res.status(204)
                         .json({
                             status: 'error',
-                            user: data[0].id,
+                            user: data[0].email,
                             message: 'Incorrect password'
                         });
                 }
@@ -53,7 +53,8 @@ const loginUser = (req, res, next) => {
 };
 
 const getSingleUser = (req, res, next) => {
-    db.any('SELECT id, first_name, last_name, email FROM users WHERE id=${user_id}', req.params)
+    console.log("get params:", req.params);
+    db.any('SELECT id, first_name, last_name, email FROM users WHERE email=${email}', req.params)
         .then(data => {
             res.status(200)
             .send({

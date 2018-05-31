@@ -8,14 +8,14 @@ class MyAccount extends Component {
     constructor(props){
         super(props);
         this.state = {
-            user_id: this.props.user,
+            email: this.props.user,
             user: null
         };
     }
 
     getUser = () => {
-        const { user_id } = this.state
-        axios.post(`/users/${user_id}`)
+        const { email } = this.state
+        axios.post(`/users/${email}`)
             .then( res => {
                 let user = res.data.single_user[0];
                 this.setState({
@@ -52,7 +52,7 @@ class MyAccount extends Component {
             return(
                 <div className='content'>
                     <h1>My Account</h1>
-                    <p>user_id:{user.id ? user.id : " no user"}</p>
+                    <p>email:{user.id ? user.id : " no user"}</p>
 
                     <div className="logout">
                         <Link className="btn btn-outline-dark" 

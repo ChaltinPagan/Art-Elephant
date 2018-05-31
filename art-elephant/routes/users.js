@@ -8,7 +8,7 @@ const db = require('../db/user-queries');
 
 router.get('/', db.getUsers);
 router.post('/new', db.registerUser);
-router.post('/:user_id', db.getSingleUser);
+router.post('/:email', db.getSingleUser);
 router.post('/', db.loginUser);
 router.put('/update-pw', db.updatePassword);
 router.put('/update', db.updateUser);
