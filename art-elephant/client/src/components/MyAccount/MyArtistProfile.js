@@ -140,6 +140,7 @@ class MyArtistProfile extends Component {
             address: address,
             images: [image_1, image_2, image_3]
         }).then( res => {
+            console.log("new res:", res);
             this.setState({
                 submit: true,
                 message: res.data.message
