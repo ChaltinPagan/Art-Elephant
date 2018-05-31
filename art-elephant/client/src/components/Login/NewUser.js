@@ -108,7 +108,7 @@ class NewUser extends Component {
                 </form>
 
                 <Route path="/new-user" render={ () => (
-                    submit ? <Redirect to={{pathname: "/my-account", state: {email: email}}} /> 
+                    submit ? <Redirect to="/my-account" /> 
                     : <Alert submit={submit} message={message} /> 
                 )} />
 

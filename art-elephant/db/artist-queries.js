@@ -69,12 +69,9 @@ const getArtistByUserID = (req, res, next) => {
 };
 
 const addArtistProfile = (req, res, next) => {
-    let bool;
     return authHelpers.createArtist(req)
-        .then( res => {
-            console.log("new res:", res);
-            bool = res;
-            if (bool) {
+        .then( data => {
+            if (data) {
                 res.status(200)
                     .json({
                         status: 'success',
