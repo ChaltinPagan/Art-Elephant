@@ -67,7 +67,7 @@ class NewUser extends Component {
 
     render() {
         const { first_name, last_name, email, password, message, submit } = this.state;
-        console.log("submit:", submit)
+        // console.log("submit:", submit)
         return (
             <div className='content'>
                 <h1>Create an Account</h1>
@@ -108,9 +108,11 @@ class NewUser extends Component {
                 </form>
 
                 <Route path="/new-user" render={ () => (
-                    submit ? <Redirect to="/my-account" /> 
+                    submit ? <Redirect to={{pathname: "/my-account", state: {email: email}}} /> 
                     : <Alert submit={submit} message={message} /> 
                 )} />
+
+                {/* <Alert submit={submit} message={message} />  */}
 
             </div>
         )
