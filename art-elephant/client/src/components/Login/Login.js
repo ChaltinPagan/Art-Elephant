@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route, Redirect } from 'react-router-dom';
-import Alert from './Alert';
+import Alert from '../Alert/Alert';
 import './Login.css';
 
 // Event handlers update state in App.js

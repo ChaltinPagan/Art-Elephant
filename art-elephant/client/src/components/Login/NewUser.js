@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Alert from './Alert';
+import Alert from '../Alert/Alert';
 
 class NewUser extends Component {
     constructor() {
