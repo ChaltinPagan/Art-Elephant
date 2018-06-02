@@ -1,22 +1,17 @@
 const bcrypt = require('bcryptjs');
-// var pgp = require('pg-promise')({});
-// var connectionString = 'postgres://localhost/artelephant';
-// var db = pgp(connectionString);
 const db = require('./db');
 
+// Compare password entered upon login to password stored in database.
 const comparePass = (userPassword, databasePassword) => {
-  console.log("comparePass:" + userPassword);
-  console.log("databasepw:", databasePassword);
-  let compare = bcrypt.compareSync(userPassword, databasePassword);
-  console.log("compare:" + compare);
-  return compare;
+  return bcrypt.compareSync(userPassword, databasePassword);
 };
 
 const createUser = (req) => {
   const salt = bcrypt.genSaltSync();
   const hash = bcrypt.hashSync(req.body.password, salt);
+  // Store all emails as lowercase. Users table has unique constraint on email. 
+  // Constraint is case-sensitive.
   let email = req.body.email.toLowerCase();
-  console.log("email:", email);
   return db.any(`INSERT INTO users (first_name, last_name, email, password) 
     VALUES ` + '(${first_name}, ${last_name}, ${email}, ${password})',
     {
@@ -26,11 +21,11 @@ const createUser = (req) => {
       password: hash
     })
     .then( user => {
-      console.log('user:', user);
       return req.body.email;
     });
 };
 
+// When user updates password, salt and hash new password and store in database.
 const encryptNewPassword = (req) => {
   const salt = bcrypt.genSaltSync();
   const hash = bcrypt.hashSync(req.body.password, salt);
@@ -41,10 +36,8 @@ const encryptNewPassword = (req) => {
 };
 
 const createArtist = (req) => {
-  console.log("create:", req.body);
   return db.any('INSERT INTO artists (user_id, medium, statement, address, images) VALUES (${user_id}, ${medium}, ${statement}, ${address}, ${images})', req.body)
   .then( data => {
-    console.log("new artist:", data)
       return "Artist profile added.";
   });
 };
