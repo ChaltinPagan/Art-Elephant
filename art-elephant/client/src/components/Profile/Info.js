@@ -16,20 +16,23 @@ class Info extends Component {
         return(
             <div className="col-sm info">
                 <div id="accordion">
+                    {/* Artist statement */}
                     <div className="card">
                         <div className="card-header" id="headingOne">
                             <h5 className="mb-0">
-                                <button className="btn btn-outline-dark" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button className="btn btn-outline-dark collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                     Statement
                                 </button>
                             </h5>
                         </div>
-                        <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div className="card-body">
                                 <p>{profile.statement}</p>
                             </div>
                         </div>
                     </div>
+
+                    {/* Studio location with map */}
                     <div className="card">
                         <div className="card-header" id="headingTwo">
                             <h5 className="mb-0">
@@ -40,11 +43,12 @@ class Info extends Component {
                         </div>
                         <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div className="card-body">
-                                <p>{profile.address}</p>
                                 <Map location={profile.address}/>
                             </div>
                         </div>
                     </div>
+
+                    {/* Contact form */}
                     <div className="card">
                         <div className="card-header" id="headingThree">
                             <h5 className="mb-0">
@@ -55,7 +59,6 @@ class Info extends Component {
                         </div>
                         <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                             <div className="card-body">
-                                {/* <p>Contact here</p> */}
                                 <Contact email={profile.email} />
                             </div>
                         </div>

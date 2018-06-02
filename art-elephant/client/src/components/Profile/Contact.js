@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact = ({ email }) => {
     return (
-        <form enctype="text/plain" method="post" action={`mailto:${email}`}>
+        <form className="contact" encType="text/plain" method="post" action={`mailto:${email}`}>
             
             <div className="form-group">
                 <label htmlFor="sender_name">Name</label>

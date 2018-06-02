@@ -16,48 +16,59 @@ class Map extends Component {
         };
 
     }
-        getCoordinates = () => {
-            const { location, api_key } = this.state;
-            axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${api_key}`)
-                .then( res => {
-                    const { lat, lng } = res.data.results[0].geometry.location;
-                    console.log("res:", res);
-                    this.setState({
-                        lat: lat,
-                        lng: lng
-                    });
-                })
-                .catch( err => console.log(err));
-        }
 
-        componentDidMount = () => {
-            this.getCoordinates();
-        }
+    // Use Google Maps Geocoding API to transform an address into coordinates
+    // Coordinates will be stored in state and passed to Google Map React component
+    // Google Map React used the Google Maps Javascript API
+    getCoordinates = () => {
+        const { location, api_key } = this.state;
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${api_key}`)
+            .then( res => {
+                const { lat, lng } = res.data.results[0].geometry.location;
+                this.setState({
+                    lat: lat,
+                    lng: lng
+                });
+            })
+            .catch( err => console.log(err));
+    }
+
+    componentDidMount = () => {
+        this.getCoordinates();
+    }
     
-
     render() {
-        const { lat, lng, api_key } = this.state;
-        console.log("lat:", lat);
-        console.log("lng:", lng);
+        const { lat, lng, api_key, location } = this.state;
         const center = {lat: lat, lng: lng};
-        console.log("center:", center);
+
+        if (!location) {
             return (
-                // Important! Always set the container height explicitly
-                <div style={{ height: '50vh', width: '100%' }}>
-                    <GoogleMapReact
-                        bootstrapURLKeys={{ key: api_key }}
-                        center={center}
-                        defaultZoom={15}
-                    >
-                        <MapMarker
-                            lat={lat}
-                            lng={lng}
-                            src={"https://png.icons8.com/color/24/000000/marker.png"}
-                        />
-                    </GoogleMapReact>
+                <div>
+                    Contact artist for studio location.
                 </div>
             )
-        
+        } else {
+            return (
+                <div>
+                    <p>{location}</p>
+
+                    {/* Important! Always set the container height explicitly */}
+                    <div style={{ height: '40vh', width: '100%' }}>
+                        <GoogleMapReact
+                            bootstrapURLKeys={{ key: api_key }}
+                            center={center}
+                            defaultZoom={15}
+                        >
+                            <MapMarker
+                                lat={lat}
+                                lng={lng}
+                                src={"https://png.icons8.com/color/24/000000/marker.png"}
+                            />
+                        </GoogleMapReact>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 
