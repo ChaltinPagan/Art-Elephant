@@ -2,46 +2,28 @@
     margin: 1em;
 }
 
+/* Artist name and medium */
 .title {
-    /* grid-area: title; */
     text-align: center;
-    /* margin: auto; */
 }
 
 .slideshow {
     width: 500px;
-    /* grid-area: slideshow; */
 }
 
 /* Back button */
 .back {
-    /* grid-area: back; */
     margin: auto;
 }
 
+/* Bootstrap Collapse container */
 .info {    
     height: 80vh;
     width: 80vh;
-    /* grid-area: info; */
 }
 
-/* .grid-container {
-    width: 80vw;
-    margin: auto;
-    display: grid;
-    grid-template-areas: 
-        'back title'
-        'slideshow info';
-    grid-gap: 2em;
-} */
-
-/* Info */
 .card {
     text-align: left;
-}
-
-h5 .btn {
-    width: inherit;
 }
 
 /* Contact form */
@@ -52,5 +34,8 @@ h5 .btn {
 @media only screen and (max-width: 600px) {
     .profile {
         padding: 0;
+    }
+    .contact .form-control {
+        width: 60vw;
     }
 }

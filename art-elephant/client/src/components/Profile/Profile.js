@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Slideshow from './Slideshow';
 import Info from './Info';
@@ -29,19 +28,14 @@ class Profile extends Component {
 
     render(){
         const { profile } = this.state;
-        console.log("profile:", profile);
         if (profile) {
             return(
                 <div className="profile container">
                     <div className="row">
                         <div className="col-sm title">
                             <h2>{`${profile.first_name} ${profile.last_name}`}</h2>
-                            <h3>{`Medium: ${profile.medium}`}</h3>
+                            <h5>{`Medium: ${profile.medium.join(", ")}`}</h5>
                         </div>
-        
-                        {/* <div className="col-sm back">
-                            <Link className="btn btn-outline-dark" to="/registry" role="button">Back</Link>
-                        </div> */}
                     </div>
     
                     <div className="row">
