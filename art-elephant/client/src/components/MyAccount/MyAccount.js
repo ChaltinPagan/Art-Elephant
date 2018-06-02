@@ -50,7 +50,7 @@ class MyAccount extends Component {
             return(
                 <div className='my-account'>
                     <h1>My Account</h1>
-                    <p>email:{user.id ? user.id : " no user"}</p>
+                    <p>{`Welcome, ${user.first_name}!`}</p>
 
                     <div className="logout">
                         <Link className="btn btn-outline-dark" 

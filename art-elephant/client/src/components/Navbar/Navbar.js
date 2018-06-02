@@ -8,7 +8,6 @@ class Navbar extends Component {
     constructor(props){
         super(props);
         this.state = {
-            submit: this.props.submit,
             open_menu: false
         }
     }
@@ -21,13 +20,13 @@ class Navbar extends Component {
     }
 
     render(){
-        const {submit, open_menu} = this.state;
+        const {open_menu} = this.state;
         return (
             <nav className="navbar navbar-expand-lg">
                 <Link to='/' className="navbar-brand">
                     <img className="elephant" alt="" src={elephant_brand} />
                     Art Elephant
-              </Link>
+            </Link>
 
                 {/* For mobile devices, use responsive navbar. 
                     If menu is open, toggle icon chnages to 'x'. */}
@@ -54,7 +53,7 @@ class Navbar extends Component {
 
                         {/* If user is logged in, Login changes to My Account link. */}
                         <li className="nav-item">
-                            {submit ? <Link to='/my-account' className='nav-link'>My Account</Link> : 
+                            {this.props.submit ? <Link to='/my-account' className='nav-link'>My Account</Link> : 
                             <Link to='/login' className='nav-link'>Login</Link> }
                             
                         </li>
@@ -62,6 +61,7 @@ class Navbar extends Component {
                 </div>
             </nav>
         )
+        
     }
 }
 
