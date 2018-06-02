@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import x_icon from './icons8-delete-30.png';
+import menu_icon from './icons8-menu-30.png';
+import elephant_brand from './icons8-elephant-35.png';
 
 class Navbar extends Component {
     constructor(props){
         super(props);
         this.state = {
             submit: this.props.submit,
-            x_icon: "https://png.icons8.com/material/30/ffffff/delete-sign.png",
-            menu_icon: "https://png.icons8.com/material/30/ffffff/menu.png",
             open_menu: false
         }
     }
@@ -20,13 +21,16 @@ class Navbar extends Component {
     }
 
     render(){
-        const {submit, open_menu, x_icon, menu_icon} = this.state;
+        const {submit, open_menu} = this.state;
         return (
             <nav className="navbar navbar-expand-lg">
                 <Link to='/' className="navbar-brand">
-                    <img className="elephant" alt="elephant" src="https://png.icons8.com/material/35/ffffff/elephant.png" />
+                    <img className="elephant" alt="" src={elephant_brand} />
                     Art Elephant
               </Link>
+
+                {/* For mobile devices, use responsive navbar. 
+                    If menu is open, toggle icon chnages to 'x'. */}
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation" onClick={this.toggleMenu} >
                     <span className="navbar-toggler-icon">
                         <img alt="menu" src={open_menu ? x_icon : menu_icon} />
@@ -47,6 +51,8 @@ class Navbar extends Component {
                         <li className="nav-item">
                             <Link to='/faq' className='nav-link'>FAQ</Link>
                         </li>
+
+                        {/* If user is logged in, Login changes to My Account link. */}
                         <li className="nav-item">
                             {submit ? <Link to='/my-account' className='nav-link'>My Account</Link> : 
                             <Link to='/login' className='nav-link'>Login</Link> }
