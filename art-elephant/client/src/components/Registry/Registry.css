@@ -30,6 +30,7 @@ h3 {
     margin: 0 1em 1em;
 }
 
+/* Styling for artist cards */
 .artist-card {
     width: 20vw;
     display: inline-block;
@@ -38,4 +39,11 @@ h3 {
 
 .artist-card img {
     clip: rect(0px,200px,200px,0px)!important;
+}
+
+@media only screen and (max-width: 600px) {
+    .artist-card {
+        width: 40vw;
+        margin: 0.5em;
+    }
 }

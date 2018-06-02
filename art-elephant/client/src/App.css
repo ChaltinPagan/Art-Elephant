@@ -14,7 +14,7 @@ body {
   font-family: 'Do Hyeon', sans-serif;
   background-color: #fbf5f3;
   color: #0f0e0e;
-  margin-bottom: 2em;
+  /* margin-bottom: 1em; */
 }
 
 /* Navigation */
@@ -23,6 +23,7 @@ body {
   padding: 0;
 }
 
+/* Elephant icon */
 .navbar-brand {
   color: #fbf5f3;
   margin-left: 1em;
@@ -36,9 +37,9 @@ body {
   margin-right: 0.5em;
 }
 
-.login {
+/* .login {
   align-content: right;
-}
+} */
 
 #nav a {
   color: #fbf5f3;
@@ -57,4 +58,16 @@ a:hover {
 /* Page content. */
 .content {
   margin-top: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: 100vw;
+  }
+  h1 {
+    margin-top: 50px;
+  }
 }

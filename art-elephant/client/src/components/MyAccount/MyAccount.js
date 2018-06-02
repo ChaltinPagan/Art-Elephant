@@ -8,7 +8,7 @@ class MyAccount extends Component {
     constructor(props){
         super(props);
         this.state = {
-            email: this.props.user,
+            email: "testuser@gmail.com",
             user: null
         };
     }
@@ -50,7 +50,7 @@ class MyAccount extends Component {
             )
         } else {
             return(
-                <div className='content'>
+                <div className='my-account'>
                     <h1>My Account</h1>
                     <p>email:{user.id ? user.id : " no user"}</p>
 

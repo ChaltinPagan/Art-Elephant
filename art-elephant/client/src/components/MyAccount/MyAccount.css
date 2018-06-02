@@ -20,7 +20,26 @@ form {
     height: 10vw;
 }
 
+/* #address {
+    height: 38px;
+} */
+
 /* Artist Profile "Medium" checkboxes. */
 input[type=checkbox] {
     width: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .my-account {
+        width: 90vw;
+    }
+    .my-account .form-control {
+        width: 80vw;
+    }
+    #statement {
+        height: 30vw;
+    }
+    .alert {
+        width: 80vw;
+    }
 }

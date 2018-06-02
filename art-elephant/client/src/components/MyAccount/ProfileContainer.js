@@ -5,7 +5,7 @@ import MyArtistProfile from './MyArtistProfile';
 
 const ProfileContainer = ({ user, first_name, onChange, submitForm }) => {
     return (
-        <div id="accordion" className="my-account">
+        <div id="accordion">
             {/* User's contact info. */}
             <div className="card">
                 <div className="card-header" id="headingOne">

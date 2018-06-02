@@ -32,19 +32,23 @@ class Profile extends Component {
         console.log("profile:", profile);
         if (profile) {
             return(
-                <div className="content grid-container">
-                    <div className="title">
-                        <h2>{`${profile.first_name} ${profile.last_name}`}</h2>
-                        <h3>{`Medium: ${profile.medium}`}</h3>
+                <div className="profile container">
+                    <div className="row">
+                        <div className="col-sm title">
+                            <h2>{`${profile.first_name} ${profile.last_name}`}</h2>
+                            <h3>{`Medium: ${profile.medium}`}</h3>
+                        </div>
+        
+                        {/* <div className="col-sm back">
+                            <Link className="btn btn-outline-dark" to="/registry" role="button">Back</Link>
+                        </div> */}
                     </div>
     
-                    <div className="back">
-                        <Link className="btn btn-outline-dark" to="/registry" role="button">Back</Link>
+                    <div className="row">
+                        <Slideshow images={profile.images}/>
+        
+                        <Info profile={profile} />
                     </div>
-    
-                    <Slideshow images={profile.images}/>
-    
-                    <Info profile={profile} />
 
                 </div>
             )

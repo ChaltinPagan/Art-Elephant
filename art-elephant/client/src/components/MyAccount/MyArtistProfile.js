@@ -10,7 +10,7 @@ class MyArtistProfile extends Component {
         this.media = ["Painting", "Drawing", "Sculpture", "Mixed Media", "Performance", "Video", "Printmaking", "Installation", "Photography"];
         this.state = {
             user_id: this.props.user.id,
-            id: "",
+            id: null,
             medium: [],
             statement: "",
             address: "", 
@@ -94,7 +94,7 @@ class MyArtistProfile extends Component {
 
     // Axios call to update to user's existing profile.
     updateArtistProfile = () => {
-        const { user_id, medium, statement, address, images } = this.state;
+        const { user_id, id, medium, statement, address, image_1, image_2, image_3 } = this.state;
 
         if (!medium.length) {
             this.setState({
@@ -113,10 +113,11 @@ class MyArtistProfile extends Component {
         } 
         
         axios.put(`artists/${user_id}`, {
+            id: id,
             medium: medium.sort(),
             statement: statement,
             address: address,
-            images: images
+            images: [image_1, image_2, image_3]
         }).then( res => {
                 this.setState({
                     submit: true,
@@ -187,10 +188,10 @@ class MyArtistProfile extends Component {
                 <div className="form-group">
                     <label htmlFor="email">Studio Address</label>
                     <small id="emailHelp" className="form-text text-muted">
-                        Optional.
+                        Optional.<br />Full address example: 123 State Street, NY, NY 10001 <br /> City, State, Country example: New York, NY, USA.
                     </small>
-                    <input type="email" className="form-control" id="address" 
-                        value={address} placeholder="Example: 123 State Street, NY, NY 10001 or New York, NY." onChange={this.handleChange} />
+                    <input type="text" className="form-control" id="address" 
+                        value={address} onChange={this.handleChange} />
                 </div>
 
                 {/* Images. Must have three. Submit URLs. */}

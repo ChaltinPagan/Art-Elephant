@@ -12,7 +12,7 @@ class Info extends Component {
     render(){
         const { profile } = this.state;
         return(
-            <div className="info">
+            <div className="col-sm info">
                 <div id="accordion">
                     <div className="card">
                         <div className="card-header" id="headingOne">
