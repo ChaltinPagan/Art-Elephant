@@ -1,44 +1,8 @@
-/* Styling for registry index. */
-.registry ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.registry li {
-    display: inline-block;
-    margin: 1em;
-}
-
-.alphaIndex a {
-    color: black;
-    padding: 0.5em;
-}
-
-.alphaIndex a:hover {
-    color: black;
-    background-color: rgb(230, 230, 230);
-    text-decoration: none;
-}
-
-/* Styling for filter buttons. */
-h3 {
-    display: inline;
-}
-
-.dropdown {
-    display: inline-block;
-    margin: 0 1em 1em;
-}
-
 /* Styling for artist cards */
 .artist-card {
     width: 20vw;
     display: inline-block;
     margin: 1em;
-}
-
-.artist-card img {
-    clip: rect(0px,200px,200px,0px)!important;
 }
 
 @media only screen and (max-width: 600px) {
