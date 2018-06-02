@@ -3,6 +3,8 @@ import { Link, Route, Redirect } from 'react-router-dom';
 import Alert from './Alert';
 import './Login.css';
 
+// Event handlers update state in App.js
+// App.js stores logged in user.
 const Login = ({ email, password, submit, message, onChange, submitForm }) => {
     return (
         <div className='content'>
