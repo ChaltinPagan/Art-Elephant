@@ -17,6 +17,8 @@ class App extends Component {
     super();
     this.state = {
       user: null,
+      first_name: "",
+      last_name: "",
       email: "",
       password: "",
       message: "",
@@ -30,7 +32,7 @@ class App extends Component {
     });
   };
 
-  submitForm = e => {
+  submitLogin = e => {
     e.preventDefault();
     const { email, password } = this.state;
 
@@ -39,7 +41,6 @@ class App extends Component {
       password: password
     })
       .then(res => {
-        console.log("login res:", res);
         if (res.status !== 200) {
           this.setState({ user: res.data.user, message: "Incorrect password.", submit: false });
         } else {
@@ -53,23 +54,63 @@ class App extends Component {
       });
   };
 
+  submitNewUser = e => {
+    e.preventDefault();
+
+    const { first_name, last_name, email, password, message } = this.state;
+
+    axios.post('/users/new', {
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: password,
+    })
+      .then(res => {
+        this.setState({
+          message: "Welcome to Art Elephant!",
+          submit: true
+        });
+      })
+      .catch(err => {
+        console.log(`Error: ${message}`);
+        this.setState({
+          message: "Email already taken.",
+          submit: false
+        });
+      });
+  };
+
   handleLogout = () => {
-    this.setState({ email: "", password: "", message: "", submit: null});
+    this.setState({ email: "", password: "", message: "", submit: null });
   }
 
   renderLogin = () => {
-    const { user, password, submit, message } = this.state;
+    const { user, email, password, submit, message } = this.state;
     return <Login user={user}
-            password={password}
-            submit={submit}
-            message={message}
-            onChange={this.handleChange} 
-            submitForm={this.submitForm} />
+      email={email}
+      password={password}
+      submit={submit}
+      message={message}
+      onChange={this.handleChange}
+      submitForm={this.submitLogin} />
+  }
+
+  renderNewUser = () => {
+    const { first_name, last_name, email, password, message, submit } = this.state;
+    return <NewUser 
+      first_name={first_name}
+      last_name={last_name}
+      email={email}
+      password={password}
+      message={message}
+      submit={submit} 
+      onChange={this.handleChange} 
+      submitForm={this.submitNewUser}/>
   }
 
   renderMyAccount = () => {
-    const { user } = this.state;
-    return <MyAccount user={user} onClick={this.handleLogout} />
+    const { email } = this.state;
+    return <MyAccount user={email} onClick={this.handleLogout} />
   }
 
   render() {
@@ -86,7 +127,7 @@ class App extends Component {
           <Route path="/about" component={About} />
           <Route path="/faq" component={FAQ} />
           <Route path="/login" render={this.renderLogin} />
-          <Route path="/new-user" component={NewUser} />
+          <Route path="/new-user" render={this.renderNewUser} />
           <Route path="/my-account" render={this.renderMyAccount} />
         </Switch>
       </div>
