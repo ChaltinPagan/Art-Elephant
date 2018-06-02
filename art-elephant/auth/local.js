@@ -1,9 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const init = require('./passport');
-// var pgp = require('pg-promise')({});
-// var connectionString = 'postgres://localhost/artelephant';
-// var db = pgp(connectionString);
 const db = require('./db');
 const authHelpers = require('./helpers');
 
@@ -15,7 +12,6 @@ passport.use(new LocalStrategy(options, (email, done) => {
   console.log("email:", email)
   db.one('SELECT * FROM users WHERE email=${email}', { email: email })
     .then((user) => {
-      console.log("user:", user)
       if (!user) {
         return done(null, false);
       } 
