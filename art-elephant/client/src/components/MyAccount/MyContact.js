@@ -21,6 +21,7 @@ class MyContact extends Component {
         });
     };
 
+    // Update user's conatct info (name and email)
     handleSubmit = () => {
         const { id, first_name, last_name, email } = this.state;
 
@@ -36,7 +37,6 @@ class MyContact extends Component {
                 last_name: last_name,
                 email: email.toLowerCase()
             }).then( res => {
-                console.log("update res:", res);
                 this.setState({
                     submit: true,
                     message: res.data.message
