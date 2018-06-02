@@ -92,7 +92,7 @@ class NewUser extends Component {
                 {/* Successful new user registration will redirect the user to the My Account page. 
                     If an email is already on file, new user will see an alert that says email is taken.*/}
                 <Route path="/new-user" render={ () => (
-                    submit ? <Redirect to={{pathname: "/my-account", state: {email: email}}} /> 
+                    submit ? <Redirect to={{pathname: "/my-account", state: {user: email}}} /> 
                     : <Alert submit={submit} message={message} /> 
                 )} />
 
