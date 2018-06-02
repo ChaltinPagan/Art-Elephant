@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Map from './Map';
 
+import Contact from './Contact';
+
 class Info extends Component {
     constructor(props){
         super(props);
@@ -53,7 +55,8 @@ class Info extends Component {
                         </div>
                         <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                             <div className="card-body">
-                                <p>Contact here</p>
+                                {/* <p>Contact here</p> */}
+                                <Contact email={profile.email} />
                             </div>
                         </div>
                     </div>
