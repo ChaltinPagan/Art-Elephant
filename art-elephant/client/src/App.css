@@ -70,4 +70,7 @@ a:hover {
   h1 {
     margin-top: 50px;
   }
+  .marching-elephants {
+    width: 90vw;
+  }
 }
