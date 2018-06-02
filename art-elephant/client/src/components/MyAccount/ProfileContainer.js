@@ -27,7 +27,7 @@ const ProfileContainer = ({ user, first_name, onChange, submitForm }) => {
                 <div className="card-header" id="headingThree">
                     <h5 className="mb-0">
                         <button className="btn btn-outline-dark collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Change Password
+                        Update Password
                         </button>
                     </h5>
                 </div>
@@ -38,7 +38,7 @@ const ProfileContainer = ({ user, first_name, onChange, submitForm }) => {
                 </div>
             </div>
 
-            {/* User can add an artist profile. */}
+            {/* User can add an artist profile. Optional. */}
             <div className="card">
                 <div className="card-header" id="headingTwo">
                     <h5 className="mb-0">

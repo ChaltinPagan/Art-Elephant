@@ -8,10 +8,12 @@ form {
     text-align: center;
 }
 
+/* Logout button */
 .logout {
     margin-bottom: 1em;
 }
 
+/* Artist Profile address and statement inputs */
 .artist-profile input, .artist-profile textarea {
     width: 40vw;
 }
@@ -19,10 +21,6 @@ form {
 #statement {
     height: 10vw;
 }
-
-/* #address {
-    height: 38px;
-} */
 
 /* Artist Profile "Medium" checkboxes. */
 input[type=checkbox] {

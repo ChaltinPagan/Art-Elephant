@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import checkboxes from './Checkboxes';
-// import MyImages from './MyImages';
 import Alert from './Alert';
 
 class MyArtistProfile extends Component {
@@ -10,7 +8,7 @@ class MyArtistProfile extends Component {
         this.media = ["Painting", "Drawing", "Sculpture", "Mixed Media", "Performance", "Video", "Printmaking", "Installation", "Photography"];
         this.state = {
             user_id: this.props.user.id,
-            id: null,
+            artist_id: null,
             medium: [],
             statement: "",
             address: "", 
@@ -26,10 +24,9 @@ class MyArtistProfile extends Component {
         const { user_id } = this.state;
         axios.post(`/artists/${user_id}`)
             .then( res => {
-                console.log("get artist:", res)
                 if (res.status === 200){
                     this.setState({
-                        id: res.data.artist[0].id,
+                        artist_id: res.data.artist[0].id,
                         medium: res.data.artist[0].medium,
                         statement: res.data.artist[0].statement,
                         address: res.data.artist[0].address,
@@ -48,7 +45,7 @@ class MyArtistProfile extends Component {
         this.getArtistData();
     }
 
-    // Updates statement and address for artist profile.
+    // Updates statement, address, and images for artist profile.
     handleChange = e => {
         this.setState({
             [e.target.id]: e.target.value
@@ -58,7 +55,7 @@ class MyArtistProfile extends Component {
     // Updates medium for artist profile.
     handleMedia = e => {
         const { medium } = this.state;
-        // Add medium if not present in "medium".
+        // Add medium if not present in "medium" array.
         if (!medium.includes(e.target.value)) {
             this.setState({
                 medium: [...medium, e.target.value]
@@ -76,26 +73,11 @@ class MyArtistProfile extends Component {
         }
     };
 
-    handleImage = e => {
-        const { images } = this.state;
-
-        if (!images[e.target.key]) {
-            images.splice(e.target.key, 0, e.target.value)
-            this.setState({
-                images: [...images]
-            })
-        }
-        
-        images.splice(e.target.key, 1, e.target.value);
-        this.setState({
-            images: [...images]
-        })
-    };
-
-    // Axios call to update to user's existing profile.
+    // Axios put request to update to user's existing profile.
     updateArtistProfile = () => {
-        const { user_id, id, medium, statement, address, image_1, image_2, image_3 } = this.state;
+        const { user_id, artist_id, medium, statement, address, image_1, image_2, image_3 } = this.state;
 
+        // User must choose a medium
         if (!medium.length) {
             this.setState({
                 submit: false,
@@ -104,6 +86,7 @@ class MyArtistProfile extends Component {
             return;
         } 
         
+        // User must submit a statement. Statement cannot exceed 100 characters.
         if (!statement || statement.length > 1000) {
             this.setState({
                 submit: false,
@@ -113,27 +96,46 @@ class MyArtistProfile extends Component {
         } 
         
         axios.put(`artists/${user_id}`, {
-            id: id,
+            id: artist_id,
             medium: medium.sort(),
             statement: statement,
             address: address,
             images: [image_1, image_2, image_3]
         }).then( res => {
-                this.setState({
-                    submit: true,
-                    message: res.data.message
-                })
+            this.setState({
+                submit: true,
+                message: res.data.message
             })
-            .catch( err => {
-                this.setState({
-                    submit: false,
-                    message: "Error updating artist profile."
-                })
+        })
+        .catch( err => {
+            this.setState({
+                submit: false,
+                message: "Error updating artist profile."
             })
+        })
     }
 
     addArtistProfile = () => {
         const { user_id, medium, statement, address, image_1, image_2, image_3 } = this.state;
+
+        // User must choose a medium
+        if (!medium.length) {
+            this.setState({
+                submit: false,
+                message: "Choose a medium."
+            })
+            return;
+        } 
+        
+        // User must submit a statement. Statement cannot exceed 100 characters.
+        if (!statement || statement.length > 1000) {
+            this.setState({
+                submit: false,
+                message: "Statement required. Statement cannot exceed 1000 characters."
+            })
+            return;
+        } 
+
         axios.post('/artists/new', {
             user_id: user_id,
             medium: medium.sort(),
@@ -156,9 +158,7 @@ class MyArtistProfile extends Component {
     }
 
     render(){
-        const { id, medium, statement, address, image_1, image_2, image_3, message, submit } = this.state;
-        console.log("state:", this.state);
-        // console.log("images:", images);
+        const { artist_id, medium, statement, address, image_1, image_2, image_3, message, submit } = this.state;
         return(
             <form className="artist-profile">
                 {/* Medium. Choose all that apply. Must choose one. */}
@@ -195,7 +195,6 @@ class MyArtistProfile extends Component {
                 </div>
 
                 {/* Images. Must have three. Submit URLs. */}
-                {/* <MyImages images={images}/> */}
                 <div className="form-group">
                     <label htmlFor="images">Images</label>
                     <small id="emailHelp" className="form-text text-muted">
@@ -210,11 +209,12 @@ class MyArtistProfile extends Component {
                     
                 </div>
 
-                {/* If no artist profile, button will be "Add Artist."
-                    If profile exists, button will be "Update." */}
-                {id || submit ? <button type="button" className="btn btn-outline-dark" onClick={this.updateArtistProfile} >Update</button> : 
+                {/* If no artist profile, button will be "Add Artist"
+                    If profile exists, button will be "Update" */}
+                {artist_id || submit ? <button type="button" className="btn btn-outline-dark" onClick={this.updateArtistProfile} >Update</button> : 
                     <button type="button" className="btn btn-outline-dark" onClick={this.addArtistProfile} >Add Artist Info</button> }
 
+                {/* If user is missing info for Artist Profile, alert will appear. */}
                 <Alert submit={submit} message={message} />
             
             </form>
