@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Alert from './Alert';
+import Alert from '../Alert/Alert';
 
 class MyContact extends Component {
     constructor(props){
