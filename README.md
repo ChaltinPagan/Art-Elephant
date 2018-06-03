@@ -46,7 +46,7 @@ Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxo
 * Node JS
 
 ## Installation
-1. Download this repository.
+1. Download or clone this repository.
 2. Obtain an [API key](https://cloud.google.com/maps-platform/) from Google Maps. An API key is required for Google Maps to work.
     * In your [Google API console](https://console.cloud.google.com/apis/), create a project.
         * Enable Maps Javascript API.
@@ -66,7 +66,7 @@ Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxo
 ## Screenshots
 ![User Account](/art-elephant/client/src/components/media/elephant-screen-3.png)
 
-![Artist Profile](/art-elephan/client/src/componentst/media/elephant-screen-2.png)
+![Artist Profile](/art-elephant/client/src/components/media/elephant-screen-2.png)
 
 ![Artist Registry](/art-elephant/client/src/components/media/elephant-screen-1.png)
 
