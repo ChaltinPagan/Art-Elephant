@@ -5,8 +5,6 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Registry from './components/Registry/Registry';
 import Opportunities from './components/Opportunities/Opportunities';
-import About from './components/About/About';
-import FAQ from './components/FAQ/FAQ';
 import Login from './components/Login/Login';
 import NewUser from './components/Login/NewUser';
 import MyAccount from './components/MyAccount/MyAccount';
@@ -124,8 +122,6 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/registry" component={Registry} />
           <Route path="/opportunities" component={Opportunities} />
-          <Route path="/about" component={About} />
-          <Route path="/faq" component={FAQ} />
           <Route path="/login" render={this.renderLogin} />
           <Route path="/new-user" render={this.renderNewUser} />
           <Route path="/my-account" render={this.renderMyAccount} />
