@@ -31,7 +31,7 @@ class Slideshow extends Component {
                             <div className="carousel-item">
                                 <img className="d-block w-100" src={images[2]} alt="art" />
                             </div>
-                        </div>
+                        </div> 
                         <a className="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span className="sr-only">Previous</span>
