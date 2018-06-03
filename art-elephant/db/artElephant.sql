@@ -23,7 +23,7 @@ CREATE TABLE artists (
 );
 
 INSERT INTO users (first_name, last_name, email, password)
-VALUES ('Chaltin', 'Pagan', 'chaltinpagan@gmail.com', 'password');
+VALUES ('Chaltin', 'Pagan', 'elephant@gmail.com', 'password');
 
 INSERT INTO users (first_name, last_name, email, password)
 VALUES ('Floriana', 'McFarland', 'florianam@gmail.com', 'password');
