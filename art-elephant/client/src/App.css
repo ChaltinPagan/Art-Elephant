@@ -14,6 +14,7 @@ body {
   font-family: 'Do Hyeon', sans-serif;
   background-color: #fbf5f3;
   color: #0f0e0e;
+  margin-bottom: 1.5em;
 }
 
 /* Navigation */
@@ -61,6 +62,7 @@ a:hover {
 /* Page content. */
 .content {
   margin-top: 50px;
+  height: 90%;
 }
 
 /* Home page slideshow */
@@ -74,8 +76,6 @@ a:hover {
   margin: auto;
 }
 
-
-
 .home-slide .carousel-caption {
   background: #ffffff;
   color: #0f0e0e;
@@ -86,6 +86,14 @@ a:hover {
   background-color: #0f0e0e;
   padding: 1em;
   border-radius: 10px;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  background-color: #ffffff;
 }
 
 @media only screen and (max-width: 600px) {
