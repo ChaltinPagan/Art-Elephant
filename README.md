@@ -47,13 +47,19 @@ Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxo
 
 ## Installation
 1. Download this repository.
-2. Seed the database using PostgreSQL.
-    * Seed file is located in `cd art-elephant/db/artElephant.sql`
-3. Start the back-end. (new terminal)
+2. Obtain an [API key](https://cloud.google.com/maps-platform/) from Google Maps. An API key is required for Google Maps to work.
+    * In your [Google API console](https://console.cloud.google.com/apis/), create a project.
+        * Enable Maps Javascript API.
+        * Enable Geocoding API.
+    * Create an **app-env.js** file and save to `art-elephant/client/src/components`.
+    * In this file, write `export const GOOGLE_API_KEY = "YOUR_API_KEY"`.
+3. Seed the database using PostgreSQL.
+    * Seed file is located in `art-elephant/db/artElephant.sql`.
+4. Start the back-end. (new terminal)
     * `cd art-elephant`
     * `npm start` 
     * Backend uses nodemon.
-4. Start the front-end. (new terminal)
+5. Start the front-end. (new terminal)
     * `cd art-elephant/client`
     * `npm start`
 
