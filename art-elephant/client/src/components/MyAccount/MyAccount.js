@@ -36,8 +36,6 @@ class MyAccount extends Component {
 
     render(){
         const { user } = this.state;
-        // console.log("user:", user)
-        console.log("nu props:",this.props);
         if (!user) {
             return(
                 <div>

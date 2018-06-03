@@ -67,7 +67,7 @@ a:hover {
 
 /* Home page slideshow */
 .home-slide {
-  width: 80vw;
+  width: 60vw;
   margin: 2em auto auto;
   border: 2px solid #8daa9d;
 }
@@ -108,6 +108,10 @@ footer {
   .marching-elephants {
     width: 90vw;
   }
+  .home-slide {
+    width: 80vw;
+  }
+  /* Styling for the image of app on mobile devices. Home page slideshow. */
   .home-slide .mobile {
     width: 25vw;
   }
