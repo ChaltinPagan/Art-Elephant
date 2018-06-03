@@ -44,12 +44,6 @@ class Navbar extends Component {
                         <li className="nav-item">
                             <Link to='/opportunities' className='nav-link'>Opportunities</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to='/about' className='nav-link'>About</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to='/faq' className='nav-link'>FAQ</Link>
-                        </li>
 
                         {/* If user is logged in, Login changes to My Account link. */}
                         <li className="nav-item">

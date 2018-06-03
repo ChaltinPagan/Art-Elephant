@@ -64,10 +64,10 @@ Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxo
     * `npm start`
 
 ## Screenshots
-![User Account](/art-elephant/media/elephant-screen-3.png)
+![User Account](/art-elephant/client/src/components/media/elephant-screen-3.png)
 
-![Artist Profile](/art-elephant/media/elephant-screen-2.png)
+![Artist Profile](/art-elephan/client/src/componentst/media/elephant-screen-2.png)
 
-![Artist Registry](/art-elephant/media/elephant-screen-1.png)
+![Artist Registry](/art-elephant/client/src/components/media/elephant-screen-1.png)
 
-<img src="art-elephant/media/elephant-screen-4.png" alt="mobile" style="width: 300px">
+<img src="art-elephant/client/src/components/media/elephant-screen-4.png" alt="mobile" style="width: 300px">

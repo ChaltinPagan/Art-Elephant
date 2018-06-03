@@ -14,7 +14,6 @@ body {
   font-family: 'Do Hyeon', sans-serif;
   background-color: #fbf5f3;
   color: #0f0e0e;
-  /* margin-bottom: 1em; */
 }
 
 /* Navigation */
@@ -64,6 +63,31 @@ a:hover {
   margin-top: 50px;
 }
 
+/* Home page slideshow */
+.home-slide {
+  width: 80vw;
+  margin: 2em auto auto;
+  border: 2px solid #8daa9d;
+}
+
+.home-slide img {
+  margin: auto;
+}
+
+
+
+.home-slide .carousel-caption {
+  background: #ffffff;
+  color: #0f0e0e;
+  border: 1px solid #8daa9d;
+}
+
+.home-slide .arrow span{
+  background-color: #0f0e0e;
+  padding: 1em;
+  border-radius: 10px;
+}
+
 @media only screen and (max-width: 600px) {
   .navbar {
     position: fixed;
@@ -75,5 +99,8 @@ a:hover {
   }
   .marching-elephants {
     width: 90vw;
+  }
+  .home-slide .mobile {
+    width: 25vw;
   }
 }
