@@ -1,6 +1,3 @@
-// const pgp = require('pg-promise')({});
-// const connectionString = 'postgres://localhost/artelephant';
-// const db = pgp(connectionString);
 const db = require('../auth/db');
 const authHelpers = require('../auth/helpers');
 const passport = require('../auth/local');
@@ -22,7 +19,6 @@ const loginUser = (req, res, next) => {
     let email = req.body.email.toLowerCase();
     db.any('SELECT * FROM users WHERE email=${email}', {email: email})
         .then(data => {
-            console.log("data:", data);
             let compare = authHelpers.comparePass(req.body.password, data[0].password);
             passport.authenticate('local', (err, user, info) => {
                 if (compare) {
@@ -43,7 +39,6 @@ const loginUser = (req, res, next) => {
             })(req, res, next);
         })
         .catch((err) => {
-            console.log("Err", err);
             res.status(500)
                 .json({
                     status: 'error',
@@ -53,7 +48,6 @@ const loginUser = (req, res, next) => {
 };
 
 const getSingleUser = (req, res, next) => {
-    console.log("get params:", req.params);
     db.any('SELECT id, first_name, last_name, email FROM users WHERE email=${email}', req.params)
         .then(data => {
             res.status(200)
@@ -97,7 +91,6 @@ const updatePassword = (req, res, next) => {
 const registerUser = (req, res, next) => {
     return authHelpers.createUser(req)
         .then(response => {
-            console.log("response:", response);
             passport.authenticate('local', (err, user, info) => {
                 if (response) {
                     res.status(200)

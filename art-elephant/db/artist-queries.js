@@ -80,7 +80,6 @@ const addArtistProfile = (req, res, next) => {
             }
         })
         .catch( err => {
-            console.log("err:", err);
             res.status(500)
                 .json({
                     status: 'error',
@@ -90,7 +89,6 @@ const addArtistProfile = (req, res, next) => {
 };
 
 const updateArtist = (req, res, next) => {
-    console.log("update artist:", req.body)
     db.any('UPDATE artists SET medium=${medium}, statement=${statement}, address=${address}, images=${images} WHERE id=${id}', req.body)
         .then( data => {
             res.status(200)
@@ -104,28 +102,10 @@ const updateArtist = (req, res, next) => {
         });
 }
 
-const getArtistImages = (req, res, next) => {
-    console.log("image user:", req.params)
-    db.any('SELECT * FROM images WHERE user_id=${user_id}', req.params)
-        .then( data => {
-            res.status(200)
-                .send({
-                    images: data
-                });
-        })
-        .catch( err => {
-            res.status(500)
-                .send({
-                    message: "No images for this user."
-                });
-        });
-};
-
 module.exports = {
     getArtists,
     getSingleArtist,
     getArtistByUserID,
     addArtistProfile,
-    updateArtist,
-    getArtistImages
+    updateArtist
 }

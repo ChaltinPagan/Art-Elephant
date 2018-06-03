@@ -22,18 +22,11 @@ CREATE TABLE artists (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- CREATE TABLE images (
---   id SERIAL PRIMARY KEY,
---   user_id INTEGER,
---   url TEXT,
---   FOREIGN KEY (user_id) REFERENCES users(id)
--- );
-
 INSERT INTO users (first_name, last_name, email, password)
 VALUES ('Chaltin', 'Pagan', 'chaltinpagan@gmail.com', 'password');
 
 INSERT INTO users (first_name, last_name, email, password)
-VALUES ('Floriana', 'McFarland', 'FlorianaM@gmail.com', 'password');
+VALUES ('Floriana', 'McFarland', 'florianam@gmail.com', 'password');
 
 INSERT INTO users (first_name, last_name, email, password)
 VALUES ('Suresha', 'Antonov', 'sureshaantonov@gmail.com', 'password');
@@ -73,7 +66,7 @@ VALUES (
   4, 
   ARRAY['Photography'], 
   'Paradoxical lived experience Foucault abandoned spaces site-specific cultural symbolism phantasmagoric visual text. Barthes abandoned spaces informance gesamkunstwerk codify Horkheimer conceptual structures. Communities of practice transhumanist Neo-Modernism aesthetic object transcend critical discourse urbane simultaneity matrix. Post-industrial conceptual constructs reclaimed histories Derrida appropriating art historical trajectories synesthesia Realism.', 
-  '245 Broome St, New York, NY',
+  '',
   ARRAY['https://images.pexels.com/photos/266526/pexels-photo-266526.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260','https://images.pexels.com/photos/355288/pexels-photo-355288.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260', 'https://images.pexels.com/photos/983200/pexels-photo-983200.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260']);
 
 INSERT INTO artists (user_id, medium, statement, address, images)
@@ -81,5 +74,5 @@ VALUES (
   5, 
   ARRAY['Photography', 'Performance'], 
   'Paradoxical lived experience Foucault abandoned spaces site-specific cultural symbolism phantasmagoric visual text. Barthes abandoned spaces informance gesamkunstwerk codify Horkheimer conceptual structures. Communities of practice transhumanist Neo-Modernism aesthetic object transcend critical discourse urbane simultaneity matrix. Post-industrial conceptual constructs reclaimed histories Derrida appropriating art historical trajectories synesthesia Realism.', 
-  '245 Broome St, New York, NY',
+  'everywhere',
   ARRAY['https://images.pexels.com/photos/7007/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=750&w=1260','https://images.pexels.com/photos/236692/pexels-photo-236692.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260', 'https://images.pexels.com/photos/277593/pexels-photo-277593.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260']);
