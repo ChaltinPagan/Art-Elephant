@@ -50,7 +50,7 @@ class MyAccount extends Component {
             )
         } else {
             return(
-                <div className='my-account'>
+                <div className='content my-account'>
                     <h1>My Account</h1>
                     <p>{`Welcome, ${user.first_name}!`}</p>
 

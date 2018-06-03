@@ -24,7 +24,6 @@ class Map extends Component {
         const { location, api_key } = this.state;
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${api_key}`)
             .then( res => {
-                console.log("res:", res);
                 const { lat, lng } = res.data.results[0].geometry.location;
 
                 // No address will return zero results.
