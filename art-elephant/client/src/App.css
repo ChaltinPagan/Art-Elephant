@@ -14,7 +14,7 @@ body {
   font-family: 'Do Hyeon', sans-serif;
   background-color: #fbf5f3;
   color: #0f0e0e;
-  margin-bottom: 1.5em;
+  margin-bottom: 100px;
 }
 
 /* Navigation */
@@ -40,10 +40,6 @@ body {
 .elephant {
   margin-right: 0.5em;
 }
-
-/* .login {
-  align-content: right;
-} */
 
 #nav a {
   color: #fbf5f3;
@@ -86,6 +82,10 @@ a:hover {
   background-color: #0f0e0e;
   padding: 1em;
   border-radius: 10px;
+}
+
+.home-slide .mobile {
+  width: 20vw;
 }
 
 /* Footer */

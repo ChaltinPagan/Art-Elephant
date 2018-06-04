@@ -38,7 +38,7 @@ class MyAccount extends Component {
         const { user } = this.state;
         if (!user) {
             return(
-                <div>
+                <div className='content'>
                     <h1>My Account</h1>
                     <p>Please login to view your account.</p>
                     <div className="login">
