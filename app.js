@@ -13,6 +13,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, 'client/public')));
 
 app.use('/users', users);
 app.use('/artists', artists);
@@ -20,6 +21,10 @@ app.use('/artists', artists);
 app.get('/', function (req, res, next) {
     res.sendFile(path.join(__dirname, 'home.html'));
 });
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/public/index.html'));
+  });
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
