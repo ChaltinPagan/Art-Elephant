@@ -11,7 +11,7 @@ const Home = () => {
             <h3>Art Elephant is an artist registry that aims to connect visual artists with curators, collectors, and art lovers.</h3>
             <h5><Link to="/new-user">Join Today!</Link></h5>
 
-            <div id="carouselIndicators" className="carousel slide home-slide" data-ride="carousel">
+            <div id="carouselIndicators" className="carousel slide home-slide" data-ride="carousel" data-interval={3000}>
                 <ol className="carousel-indicators">
                     <li data-target="#carouselIndicators" data-slide-to="0" className="active"></li>
                     <li data-target="#carouselIndicators" data-slide-to="1"></li>

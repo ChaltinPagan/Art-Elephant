@@ -15,7 +15,7 @@ class Slideshow extends Component {
         } else {
             return (
                 <div className="col-sm-5 slideshow">
-                    <div id="carouselIndicators" className="carousel slide" data-ride="carousel">
+                    <div id="carouselIndicators" className="carousel slide" data-ride="carousel" data-interval={3000}>
                         <ol className="carousel-indicators">
                             <li data-target="#carouselIndicators" data-slide-to="0" className="active"></li>
                             <li data-target="#carouselIndicators" data-slide-to="1"></li>

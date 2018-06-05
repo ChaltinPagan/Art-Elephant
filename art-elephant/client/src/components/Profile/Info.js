@@ -41,7 +41,7 @@ class Info extends Component {
                                 </button>
                             </h5>
                         </div>
-                        <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div id="collapseTwo" className="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div className="card-body">
                                 <Map location={profile.address}/>
                             </div>
