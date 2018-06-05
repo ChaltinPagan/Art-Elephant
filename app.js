@@ -4,7 +4,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 const users = require('./routes/users');
 const artists = require('./routes/artists');
