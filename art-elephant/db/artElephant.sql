@@ -1,8 +1,3 @@
-DROP DATABASE IF EXISTS elephant;
-CREATE DATABASE elephant;
-
-\c elephant;
-
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   first_name VARCHAR,
