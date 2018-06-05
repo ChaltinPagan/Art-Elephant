@@ -20,9 +20,7 @@ class Registry extends Component {
         axios.get('/artists')
             .then( res => {
                 this.setState({
-                    artists: res.data.artists,
-                    filtered_artists: [],
-                    message: ""
+                    artists: res.data.artists
                 })
             })
             .catch( err => console.log(err) );
@@ -54,11 +52,18 @@ class Registry extends Component {
 
     }
 
+    handleReset = () => {
+        this.setState({
+            filtered_artists: [],
+            message: ""
+        })
+    }
+
     renderArtistList = () => {
         const { artists, filtered_artists, message } = this.state;
         return (
             <div>
-                <button type="button" className="btn btn-outline-dark btn-filter" onClick={this.getArtists}>All Artists</button>
+                <button type="button" className="btn btn-outline-dark btn-filter" onClick={this.handleReset}>All Artists</button>
                 <div className="dropdown">
                     <button className="btn btn-outline-dark dropdown-toggle btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filter by Medium
