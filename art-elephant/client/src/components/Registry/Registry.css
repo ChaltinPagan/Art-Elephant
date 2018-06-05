@@ -5,6 +5,23 @@
     margin: 1em;
 }
 
+.registry .btn-filter{
+    margin: 1em;
+}
+
+/* Filter button */
+.dropdown-item:hover {
+    background-color: #4FF1A8;
+}
+
+.dropdown-item:active {
+    background-color: #4FF1A8;
+}
+
+.dropdown {
+    display: inline-block;
+}
+
 @media only screen and (max-width: 600px) {
     .artist-card {
         width: 40vw;

@@ -8,8 +8,11 @@ import Artists from './Artists';
 class Registry extends Component {
     constructor(){
         super();
+        this.media = ["Painting", "Drawing", "Sculpture", "Mixed Media", "Performance", "Video", "Printmaking", "Installation", "Photography"] ;
         this.state = {
-            artists: []
+            artists: [],
+            filtered_artists: [],
+            message: ""
         };
     }
 
@@ -17,7 +20,9 @@ class Registry extends Component {
         axios.get('/artists')
             .then( res => {
                 this.setState({
-                    artists: res.data.artists
+                    artists: res.data.artists,
+                    filtered_artists: [],
+                    message: ""
                 })
             })
             .catch( err => console.log(err) );
@@ -27,9 +32,45 @@ class Registry extends Component {
         this.getArtists();
     };
 
-    renderArtistList = () => {
+    handleFilter = (e) => {
         const { artists } = this.state;
-        return <Artists artists={artists} />
+
+        let filter = artists.filter( el => {
+            if (el.medium.includes(e.target.innerText)) {
+                return el;
+            } 
+        })
+
+        if (filter.length) {
+            this.setState({
+                filtered_artists: filter,
+                message: ""
+            })
+        } else {
+            this.setState({
+                message: "No artists in this medium."
+            })
+        }
+
+    }
+
+    renderArtistList = () => {
+        const { artists, filtered_artists, message } = this.state;
+        return (
+            <div>
+                <button type="button" className="btn btn-outline-dark btn-filter" onClick={this.getArtists}>All Artists</button>
+                <div className="dropdown">
+                    <button className="btn btn-outline-dark dropdown-toggle btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter by Medium
+                    </button>
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" onClick={this.handleFilter}>
+                        {this.media.map( (el, i) => 
+                        <button className="dropdown-item" type="button" key={i}>{el}</button>)}
+                    </div>
+                </div>
+                <Artists artists={artists} selected={filtered_artists} message={message} />
+            </div>
+        )
     };
 
     renderProfile = (props) => {
