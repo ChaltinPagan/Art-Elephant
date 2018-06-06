@@ -3,15 +3,13 @@ import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 import map_marker from './icons8-marker-24.png';
 
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
-
 const MapMarker = ({ src }) => <img alt="studio" src={src}/>;
 
 class Map extends Component {
     constructor(props){
         super(props);
         this.state = {
-            api_key: GOOGLE_API_KEY,
+            api_key: process.env.GOOGLE_API_KEY,
             location: this.props.location,
             lat: null,
             lng: null
