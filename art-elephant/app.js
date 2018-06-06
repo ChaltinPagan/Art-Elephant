@@ -3,7 +3,6 @@ const logger = require('morgan');
 const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const app = express();
 const port = 8000;
 
