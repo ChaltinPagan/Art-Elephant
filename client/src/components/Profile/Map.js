@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
-import { GOOGLE_API_KEY } from '../../app-env';
+import map_marker from './icons8-marker-24.png';
 
-const MapMarker = ({ src }) => <img alt="studio" src={src}/>;
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+
+const MapMarker = ({ src }) => <img alt="studio" src={map_marker}/>;
 
 class Map extends Component {
     constructor(props){
@@ -22,7 +24,7 @@ class Map extends Component {
     // Google Map React used the Google Maps Javascript API
     getCoordinates = () => {
         const { location, api_key } = this.state;
-        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${api_key}`)
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${GOOGLE_API_KEY}`)
             .then( res => {
                 const { lat, lng } = res.data.results[0].geometry.location;
 
