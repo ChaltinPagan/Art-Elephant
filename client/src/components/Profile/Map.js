@@ -5,7 +5,7 @@ import map_marker from './icons8-marker-24.png';
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
-const MapMarker = ({ src }) => <img alt="studio" src={map_marker}/>;
+const MapMarker = ({ src }) => <img alt="studio" src={src}/>;
 
 class Map extends Component {
     constructor(props){
@@ -73,7 +73,7 @@ class Map extends Component {
                             <MapMarker
                                 lat={lat}
                                 lng={lng}
-                                src={"https://png.icons8.com/color/24/000000/marker.png"}
+                                src={map_marker}
                             />
                         </GoogleMapReact>
                     </div>
