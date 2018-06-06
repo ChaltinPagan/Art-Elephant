@@ -1,7 +1,7 @@
 # Art Elephant
 
 ## Demo
-Visit **Art Elephant** at [art-elephant.herokuapp.com].(art-elephant.herokuapp.com)
+Visit **Art Elephant** at [art-elephant.herokuapp.com](art-elephant.herokuapp.com)
 
 This GitHub branch is the version deployed to Heroku. 
 
