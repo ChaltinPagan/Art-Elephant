@@ -22,7 +22,7 @@ class Map extends Component {
     // Google Map React used the Google Maps Javascript API
     getCoordinates = () => {
         const { location, api_key } = this.state;
-        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${GOOGLE_API_KEY}`)
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${api_key}`)
             .then( res => {
                 const { lat, lng } = res.data.results[0].geometry.location;
 
