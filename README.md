@@ -1,11 +1,16 @@
 # Art Elephant
 
+## Demo
+Visit **Art Elephant** at [art-elephant.herokuapp.com].(art-elephant.herokuapp.com)
+
+This GitHub branch is the version deployed to Heroku. 
+
 ## About 
 **Art Elephant** is an artist registry that aims to connect visual artists with curators, collectors, and art lovers. 
 
 One way **Art Elephant** distinguishes itself is in the use of Google Maps. An artist's studio location is accurately displayed on the map. With this service,we hope to encourge our users to arrange for a studio visit. 
 
-![Elephants Marching](/art-elephant/client/src/Descriptive_Zoopraxography_Elephant_Ambling_Animated_13.gif)
+![Elephants Marching](/client/src/Descriptive_Zoopraxography_Elephant_Ambling_Animated_13.gif)
 Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxography_Elephant_Ambling_Animated_13.gif)
 
 ## Features
@@ -46,7 +51,7 @@ Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxo
 * Node JS
 
 ## Installation
-1. Download or clone this repository.
+1. Download or clone the **master** branch of this repository.
 2. Obtain an [API key](https://cloud.google.com/maps-platform/) from Google Maps. An API key is required for Google Maps to work.
     * In your [Google API console](https://console.cloud.google.com/apis/), create a project.
         * Enable Maps Javascript API.
@@ -64,10 +69,10 @@ Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxo
     * `npm start`
 
 ## Screenshots
-![User Account](/art-elephant/client/src/components/media/elephant-screen-3.png)
+![User Account](/client/src/components/media/elephant-screen-3.png)
 
-![Artist Profile](/art-elephant/client/src/components/media/elephant-screen-2.png)
+![Artist Profile](/client/src/components/media/elephant-screen-2.png)
 
-![Artist Registry](/art-elephant/client/src/components/media/elephant-screen-1.png)
+![Artist Registry](/client/src/components/media/elephant-screen-1.png)
 
-<img src="art-elephant/client/src/components/media/elephant-screen-4.png" alt="mobile" style="width: 300px">
+<img src="client/src/components/media/elephant-screen-4.png" alt="mobile" style="width: 300px">
