@@ -1,9 +1,17 @@
 # Art Elephant
 
-## Demo
+* [Demo](#demo)
+* [About](#about)
+* [Features](#features)
+* [Future](#future)
+* [Technology](#tech)
+* [Installation](#install)
+* [Screenshots](#images)
+
+## Demo <a id="demo"></a>
 Visit Art Elephant at [https://art-elephant.herokuapp.com](https://art-elephant.herokuapp.com).
 
-## About 
+## About <a id="about"></a>
 **Art Elephant** is an artist registry that aims to connect visual artists with curators, collectors, and art lovers. 
 
 One way **Art Elephant** distinguishes itself is in the use of Google Maps. An artist's studio location is accurately displayed on the map. With this service,we hope to encourge our users to arrange for a studio visit. 
@@ -11,7 +19,7 @@ One way **Art Elephant** distinguishes itself is in the use of Google Maps. An a
 ![Elephants Marching](/art-elephant/client/src/Descriptive_Zoopraxography_Elephant_Ambling_Animated_13.gif)
 Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxography_Elephant_Ambling_Animated_13.gif)
 
-## Features
+## Features <a id="features"></a>
 * User Accounts
     * Add and update your artist profile
 * Artist Profiles
@@ -22,7 +30,7 @@ Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxo
     * Contact Form
 * Responsive Web Design (mobile-compatible)
 
-## Future 
+## Future <a id="future"></a>
 * Community Building
     * Opportunities Page
 * Expanding the Market
@@ -38,7 +46,7 @@ Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxo
         * Link to a visual artist's Artsy profile (if applicable)
         * Explore an artist's 'genes'
 
-## Technology
+## Technology <a id="tech"></a>
 * React
 * Bootstrap
 * Google Maps APIs
@@ -48,7 +56,7 @@ Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxo
 * Express JS
 * Node JS
 
-## Installation
+## Installation <a id="install"></a>
 1. Download or clone this repository.
 2. Obtain an [API key](https://cloud.google.com/maps-platform/) from Google Maps. An API key is required for Google Maps to work.
     * In your [Google API console](https://console.cloud.google.com/apis/), create a project.
@@ -66,7 +74,7 @@ Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxo
     * `cd art-elephant/client`
     * `npm start`
 
-## Screenshots
+## Screenshots <a id="images"></a>
 ![User Account](/art-elephant/client/src/components/media/elephant-screen-3.png)
 
 ![Artist Profile](/art-elephant/client/src/components/media/elephant-screen-2.png)
