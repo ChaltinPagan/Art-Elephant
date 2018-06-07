@@ -79,7 +79,7 @@ class App extends Component {
   };
 
   handleLogout = () => {
-    this.setState({ email: "", password: "", message: "", submit: null });
+    this.setState({ user: null, email: "", password: "", message: "", submit: null });
   }
 
   renderLogin = () => {
