@@ -1,5 +1,8 @@
 # Art Elephant
 
+## Demo
+Visit Art Elephant at [https://art-elephant.herokuapp.com](https://art-elephant.herokuapp.com).
+
 ## About 
 **Art Elephant** is an artist registry that aims to connect visual artists with curators, collectors, and art lovers. 
 
