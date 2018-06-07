@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 import map_marker from './icons8-marker-24.png';
+import { GOOGLE_API_KEY } from '../../app-env';
 
 const MapMarker = ({ src }) => <img alt="studio" src={src}/>;
 
