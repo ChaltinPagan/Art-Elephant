@@ -127,7 +127,9 @@ class App extends Component {
           <Route path="/my-account" render={this.renderMyAccount} />
         </Switch>
 
-        <footer><a href="https://icons8.com/" target="_blank" rel="noopener noreferrer">Icons by Icons8</a></footer>
+        <footer>
+          Icons by <a href="https://icons8.com/" target="_blank" rel="noopener noreferrer">Icons8</a>.{" "}
+          Coded by <a href="https://www.linkedin.com/in/chaltinpagan/" target="_blank" rel="noopener noreferrer">Chaltin Pagan</a>.</footer>
       </div>
     );
   }
