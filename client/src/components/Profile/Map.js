@@ -10,7 +10,7 @@ class Map extends Component {
     constructor(props){
         super(props);
         this.state = {
-            api_key: process.env.GOOGLE_API_KEY,
+            api_key: GOOGLE_API_KEY,
             location: this.props.location,
             lat: null,
             lng: null
