@@ -14,7 +14,7 @@ Visit Art Elephant at [https://art-elephant.herokuapp.com](https://art-elephant.
 ## About <a id="about"></a>
 **Art Elephant** is an artist registry that aims to connect visual artists with curators, collectors, and art lovers. 
 
-One way **Art Elephant** distinguishes itself is in the use of Google Maps. An artist's studio location is accurately displayed on the map. With this service,we hope to encourge our users to arrange for a studio visit. 
+One way **Art Elephant** distinguishes itself is in the use of Google Maps. An artist's studio location is accurately displayed on the map. With this service, we hope to encourage our users to arrange for a studio visit. 
 
 ![Elephants Marching](/art-elephant/client/src/Descriptive_Zoopraxography_Elephant_Ambling_Animated_13.gif)
 Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Descriptive_Zoopraxography_Elephant_Ambling_Animated_13.gif)
